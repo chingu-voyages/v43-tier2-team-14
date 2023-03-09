@@ -1,4 +1,4 @@
-# voyage-tasks
+# v43-tier2-team-14 project
 
 ## How to contibute
 
