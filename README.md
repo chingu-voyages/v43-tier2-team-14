@@ -20,6 +20,11 @@ git checkout development
 git checkout -b YOUR_BRANCH_NAME
 ```
 
+4- to see the list of all remote branches 
+```sh
+git branch -r 
+```
+
 ## Branch name guides
 
 1. Please name your branch with one of these options
