@@ -15,7 +15,7 @@ function App() {
       </h1>
       {/* <button onClick={signWithGoogleHandler}>Signin With Google</button> */}
       <h1>Sign in</h1>
-      <a class="button google" href="/login/federated/google">
+      <a className="button google" href="/login/federated/google">
         Sign in with Google
       </a>
     </div>
