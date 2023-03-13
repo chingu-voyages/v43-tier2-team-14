@@ -1,54 +1,46 @@
-# v43-tier2-team-14 project
+# Virtual Book App (Chingue-v43-tier-2-team-14)
 
-## How to contribute
+## Overview
 
-1. Clone this repository
+The project is a virtual book store made by react with fetched data from external API.
 
-```sh
+## Features
+
+- multi pages with dynamic routing
+- .....
+- .....
+
+## How To Use
+
+To be able to use this react app locally in a development environment you will need the following:
+
+1. You will need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) installed on your computer.
+
+2. Then From your terminal, you should do the following:
+
+```cmd
+# Clone this repository
 git clone https://github.com/chingu-voyages/v43-tier2-team-14.git
+
+# Go into the repository
+cd v43-tier2-team-14
+
+# Install dependencies
+npm install
+
+# Run the app
+npm run dev
 ```
 
-2. to see the list of all remote branches
+## Technologies used
 
-```sh
-git branch -r
-```
+- Vite
+- TailwindCSS
+- Redux-toolkit
+- React Router
+- React Hooks
 
-3. switch to development branch
+## Contributing
 
-```sh
-git checkout development
-```
-
-4. create your own working branch and switch to it
-
-```sh
-git checkout -b YOUR_BRANCH_NAME
-```
-
-## Branch name guides
-
-Please name your branch with one of these options
-
-- `feature/YOUR_BRANCH_NAME_HERE` - If you're making a new feature
-- `fix/YOUR_BRANCH_NAME_HERE` - If you're making some bug fixes
-- `hotfix/YOUR_BRANCH_NAME_HERE` - If you're making a quick fix that needs to merge quickly
-- `refactor/YOUR_BRANCH_NAME_HERE` - If you're making some code refactoring
-
-## P.S: Before starting a new feature/fix/bug, we have to
-
-1. pull changes from development branch to make sure you are up to date.
-
-```sh
-Git pull origin development
-```
-
-2. create your working branch.
-3. switch to your branch.
-
-### Please don’t push any codes to main branch, instead,
-
-1. push your code to your working branch
-2. make pull request relative to development branch by clicking the compare & pull request button
-
-Kindly carefully check this guide: [Git Workflow](https://www.notion.so/Git-Workflow-89fc4fd7ac98413e9f008bccdad2459a).
+Kindly check the contributing instructions listed in
+[CONTRIBUTING file](https://github.com/chingu-voyages/v43-tier2-team-14/blob/main/CONTRIBUTING.md)
