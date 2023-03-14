@@ -1,14 +1,35 @@
-import "./App.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import "./App.css"
+import Root from "./pages/Root"
+import Home from "./pages/Home"
+import Cart from "./pages/Cart"
+import LogIn from "./pages/LogIn"
+import Error from "./pages/Error"
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Root />,
+      errorElement: <Error />,
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+        {
+          path: "login",
+          element: <LogIn />,
+        },
+        {
+          path: "cart",
+          element: <Cart />,
+        },
+      ],
+    },
+  ])
 
-  return (
-    <div className="App">
-      <h1 className="text-3xl bg-blue-300 font-bold underline">
-        Welcome To The Main Project of Team-14
-      </h1>
-    </div>
-  );
+  return <RouterProvider router={router} />
 }
 
-export default App;
+export default App
