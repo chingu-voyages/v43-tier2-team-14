@@ -1,5 +1,5 @@
 import express from "express"
-import axios from "axios"
+import fetch from "node-fetch"
 const router = express.Router()
 
 router.get('/', async (req, res, next) => {
@@ -28,7 +28,7 @@ router.get('/', async (req, res, next) => {
       fetchUrl += `&maxResults=${limit}`
     }
     console.log(fetchUrl)
-    const response = await axios.get(`${fetchUrl}&key=${apiKey}`)
+    const response = await fetch(`${fetchUrl}&key=${apiKey}`)
     console.log(response)
     const data = await response.json()
     console.log(data)
