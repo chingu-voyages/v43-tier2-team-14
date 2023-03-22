@@ -9,7 +9,7 @@ passport.use(
     {
       clientID: GOOGLE_ID,
       clientSecret: GOOGLE_SECRET,
-      callbackURL: "http://v43-tier2-team14-backend/auth/google/callback",
+      callbackURL: "https://v43-tier2-team14-backend/auth/google/callback",
     },
     async (accessToken, refreshToken, profile, done) => {
       const googleId = profile.id;
