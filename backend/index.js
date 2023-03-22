@@ -39,9 +39,7 @@ app.use(
   saveUninitialized: true,
   secret: SESSION_SECRET,
   // cookie: { secure: true, maxAge: 60 * 60 * 1000 * 24 }, // 1 day
-  store: MongoStore.create({
-    mongoUrl: MONGO_URI,
-  })
+  store: new MongoStore({ mongoUrl: MONGO_URI })
 }));
 
 // initializing passportjs instance with its session  
