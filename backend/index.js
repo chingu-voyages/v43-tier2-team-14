@@ -49,7 +49,7 @@ app.use('/auth', authRoutes)
 
 app.get("/", (req, res, next) => {
   console.log(req.user)
-  res.send(req.user)
+  res.send({ user: req.user })
 })
 
 app.listen(port, () => {
