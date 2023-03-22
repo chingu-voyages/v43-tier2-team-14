@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import cors from "cors"
 import session from "express-session"
 import passport from "passport";
+import connectMongo from 'connect-mongo';
 
 import dbConnection from "./utils/db.js"
 
@@ -11,6 +12,8 @@ import authRoutes from "./routes/auth.js"
 import booksRoutes from "./routes/books.js"
 
 dotenv.config()
+
+const MongoStore = connectMongo(session);
 
 const app = express()
 
@@ -36,6 +39,7 @@ app.use(
   saveUninitialized: true,
   secret: SESSION_SECRET,
   // cookie: { secure: true, maxAge: 60 * 60 * 1000 * 24 }, // 1 day
+  store: MongoStore.create(options)
 }));
 
 // initializing passportjs instance with its session  
