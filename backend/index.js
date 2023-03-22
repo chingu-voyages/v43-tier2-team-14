@@ -13,7 +13,7 @@ import booksRoutes from "./routes/books.js"
 
 dotenv.config()
 
-const MongoStore = connectMongo(session);
+const MongoStore = new connectMongo(session);
 
 const app = express()
 
