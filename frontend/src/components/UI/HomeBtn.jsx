@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 const HomeBtn = () => {
   return (
-    <button className="my-5 px-4 py-2 rounded-md border-2 border-red-400 capitalize duration-300 hover:bg-red-500 hover:text-white">
+    <button className="my-5 px-4 py-2 rounded-md capitalize duration-300">
       <Link to="/">return homepage</Link>
     </button>
   )

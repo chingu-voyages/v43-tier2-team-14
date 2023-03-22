@@ -8,12 +8,28 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  --main-bg: #f1eee3;
+  --alt-bg: #FDFBF7;
+  --main-text: #1C1F2C;
+  --btn-text: #999BA0;
+  --btn-bg: #272A34;
+
 
 
 }
 
 body {
-  padding:150px 0;
-  text-align: center;
+  padding: 150px 0;
   min-height: 100vh;
+  background-color: var(--main-bg);
+}
+
+
+button {
+  color: #cacaca;
+  background-color: var(--btn-bg)
+}
+
+button:hover{
+  color:white;
 }

@@ -1,11 +1,13 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./App.css";
-import Root from "./pages/Root";
-import Home from "./pages/Home";
-import Cart from "./pages/Cart";
-import Register from "./pages/Register";
-import LogIn from "./pages/LogIn";
-import Error from "./pages/Error";
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import "./App.css"
+import Root from "./pages/Root"
+import Home from "./pages/Home"
+import Cart from "./pages/Cart"
+import Register from "./pages/Register"
+import LogIn from "./pages/LogIn"
+import Error from "./pages/Error"
+import BookDetails from "./pages/bookDetails"
+import WishlistPage from "./pages/WishlistPage"
 
 function App() {
   const router = createBrowserRouter([
@@ -23,6 +25,14 @@ function App() {
           element: <LogIn />,
         },
         {
+          path: "book",
+          element: <BookDetails />,
+        },
+        {
+          path: "wishlist",
+          element: <WishlistPage />,
+        },
+        {
           path: "cart",
           element: <Cart />,
         },
@@ -32,9 +42,9 @@ function App() {
         },
       ],
     },
-  ]);
+  ])
 
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={router} />
 }
 
-export default App;
+export default App
