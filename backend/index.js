@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 // setting up cors access for just the frontend
 app.use(
   cors({
-    origin: APP_HOME,
+    origin: [APP_HOME,'http://localhost:3000','http://localhost:5173'],
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
