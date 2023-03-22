@@ -1,5 +1,5 @@
 import express from "express"
-import dotenv from 'dotenv'
+import https from "https"
 import cors from "cors"
 import session from "express-session"
 import passport from "passport";
@@ -11,8 +11,6 @@ import { PORT, APP_HOME, SESSION_SECRET, MONGO_URI } from "./utils/secrets.js"
 import authRoutes from "./routes/auth.js"
 import booksRoutes from "./routes/books.js"
 
-dotenv.config()
-
 const app = express()
 
 const port = PORT || 4005
@@ -21,6 +19,7 @@ import "./config/passport.js";
 
 // Middlewares
 app.use(express.json())
+app.use(express.static('public', { dotfiles: 'allow' }))
 app.use(express.urlencoded({ extended: true }));
 
 // setting up cors access for just the frontend
@@ -52,6 +51,9 @@ app.get("/", (req, res, next) => {
   res.send({ user: req.user })
 })
 
+app.get('/.well-known/acme-challenge/a-string', (req, res, next) => {
+  res.send("a-challenge")
+})
 app.listen(port, () => {
   dbConnection()
   console.log(`server started on port ${port}`)
