@@ -12,6 +12,7 @@ import authRoutes from "./routes/auth.js"
 import booksRoutes from "./routes/books.js"
 
 const app = express()
+const server = https.createServer(options, app)
 
 const port = PORT || 4005
 
@@ -35,7 +36,7 @@ app.use(
   resave: false,
   saveUninitialized: true,
   secret: SESSION_SECRET,
-  // cookie: { secure: true, maxAge: 60 * 60 * 1000 * 24 }, // 1 day
+  cookie: { secure: true, maxAge: 60 * 60 * 1000 * 24 }, // 1 day
   store: MongoStore.create({ mongoUrl: MONGO_URI })
 }));
 
@@ -51,10 +52,7 @@ app.get("/", (req, res, next) => {
   res.send({ user: req.user })
 })
 
-app.get('/.well-known/acme-challenge/a-string', (req, res, next) => {
-  res.send("a-challenge")
-})
-app.listen(port, () => {
+server.listen(port, () => {
   dbConnection()
   console.log(`server started on port ${port}`)
 })
