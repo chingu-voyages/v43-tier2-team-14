@@ -6,7 +6,6 @@ import Cart from "./pages/Cart";
 import Register from "./pages/Register";
 import LogIn from "./pages/LogIn";
 import Error from "./pages/Error";
-
 function App() {
   const router = createBrowserRouter([
     {
