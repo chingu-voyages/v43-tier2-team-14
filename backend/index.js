@@ -7,7 +7,7 @@ import connectMongo from 'connect-mongo';
 
 import dbConnection from "./utils/db.js"
 
-import { PORT, APP_HOME, SESSION_SECRET } from "./utils/secrets.js"
+import { PORT, APP_HOME, SESSION_SECRET, MONGO_URI } from "./utils/secrets.js"
 import authRoutes from "./routes/auth.js"
 import booksRoutes from "./routes/books.js"
 
@@ -39,7 +39,9 @@ app.use(
   saveUninitialized: true,
   secret: SESSION_SECRET,
   // cookie: { secure: true, maxAge: 60 * 60 * 1000 * 24 }, // 1 day
-  store: MongoStore.create(options)
+  store: MongoStore.create({
+    mongoUrl: MONGO_URI,
+  })
 }));
 
 // initializing passportjs instance with its session  
