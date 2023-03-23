@@ -3,6 +3,7 @@ import cors from "cors"
 import session from "express-session"
 import passport from "passport";
 import MongoStore from 'connect-mongo'
+import helmet from "helmet";
 
 import dbConnection from "./utils/db.js"
 
@@ -17,6 +18,7 @@ const port = PORT || 4005
 import "./config/passport.js";
 
 // Middlewares
+app.use(helmet())
 app.use(express.json())
 app.use(express.static('public', { dotfiles: 'allow' }))
 app.use(express.urlencoded({ extended: true }));
@@ -35,8 +37,12 @@ app.use(
   resave: false,
   saveUninitialized: true,
   secret: SESSION_SECRET,
-  // cookie: { secure: true, maxAge: 60 * 60 * 1000 * 24 }, // 1 day
-  store: MongoStore.create({ mongoUrl: MONGO_URI })
+  cookie: { secure: true, maxAge: 60 * 60 * 1000 * 24 }, // 1 day
+  store: MongoStore.create({
+    mongoUrl: MONGO_URI,
+    ttl: 14 * 24 * 60 * 60,
+    autoRemove: 'native'
+  })
 }));
 
 // initializing passportjs instance with its session  
