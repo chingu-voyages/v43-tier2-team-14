@@ -6,27 +6,25 @@ import BookBtns from "./BookBtns"
 import GenericBtns from "../UI/GenericBtns"
 
 const BookBody = () => {
+  const handler = () => {
+    console.log("book added to wishlist!")
+  }
   return (
-    <article className="book-details">
-      <h1 className="text-6xl">Book name lives here</h1>
+    <article className="book-details flex flex-col mt-4 space-y-4">
+      <h1 className="text-6xl text-center lg:text-left">
+        Book name lives here
+      </h1>
       <div className="auther">dan brown</div>
-      <p className="brief-desc">
+      <p className="brief-desc mb-12">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. At voluptas et
-        id, aliquam consectetur unde exercitationem culpa veniam eaque
+        id, aliquam consectetur unde exercitationem culpa veniam eaquea
         laudantium ipsum voluptatem similique consequuntur est?
       </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat ducimus
-        laudantium deleniti esse quas debitis fugiat, error nemo pariatur
-        officia dolore dolores qui voluptate explicabo ipsa quidem labore.
-        Aliquid ex delectus perspiciatis in soluta quis obcaecati doloremque
-        doloribus qui necessitatibus commodi corrupti eligendi iste sunt saepe
-        labore id odit unde iure molestiae possimus hic, accusamus
-      </p>
-      <div className="flex justify-around mt-12">
+
+      <div className="flex justify-between pt-16">
         <GenericBtns title="add to cart" icon={<BsCartPlusFill />} />
         <div className="flex space-x-4 items-center">
-          <BookBtns icon={<BsBookmark />} />
+          <BookBtns icon={<BsBookmark />} onClick={handler} />
           <BookBtns icon={<BsShare />} />
           <BookBtns icon={<BsDownload />} />
         </div>

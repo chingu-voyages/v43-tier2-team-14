@@ -1,8 +1,8 @@
 const GenericBtns = ({ title, icon }) => {
   return (
     <>
-      <button className="flex items-center rounded-full px-6 py-2">
-        <h3 className="capitalize">{title}</h3>
+      <button className="flex items-center bg-bg-btn text-text-btn rounded-full px-6 py-2 hover:text-white">
+        <h3 className="capitalize mr-4 font-bold">{title}</h3>
         <span className="text-xl">{icon}</span>
       </button>
     </>
