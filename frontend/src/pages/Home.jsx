@@ -6,6 +6,9 @@ const Home = () => {
       <h1 className="text-3xl bg-blue-300 font-bold underline">
         Welcome To The Main Project of Team-14
       </h1>
+      <a href="https://v43-tier2-team14-backend.onrender.com/auth/google">
+        Login
+      </a>
       <FetchingBooks />
     </div>
   );
