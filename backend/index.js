@@ -8,14 +8,13 @@ import https from "https"
 import fs from "fs"
 import dbConnection from "./utils/db.js"
 
-import { PORT, HTTPS_PORT, SESSION_SECRET, MONGO_URI } from "./utils/secrets.js"
+import { PORT, , SESSION_SECRET, MONGO_URI } from "./utils/secrets.js"
 import authRoutes from "./routes/auth.js"
 import booksRoutes from "./routes/books.js"
 
 const app = express()
 
 const port = PORT || 4000
-const httpsPort = HTTPS_PORT || 4001
 
 import "./config/passport.js";
 
@@ -59,18 +58,7 @@ app.get("/", (req, res, next) => {
   res.send({ user: req.user })
 })
 
-const privateKey = fs.readFileSync('ssl/key.pem', 'utf8');
-const certificate = fs.readFileSync('ssl/cert.pem', 'utf8');
-const credentials = { key: privateKey, cert: certificate, passphrase: '??' };
-
 app.listen(port, () => {
   dbConnection()
   console.log(`SERVER HTTP server started on port ${port}`)
 })
-
-// https
-//   .createServer(credentials, app)
-//   .listen(httpsPort, () => {
-//     dbConnection()
-//     console.log(`HTTPS server started on port 4001`);
-//   })
