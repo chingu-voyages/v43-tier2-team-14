@@ -8,13 +8,14 @@ import https from "https"
 import fs from "fs"
 import dbConnection from "./utils/db.js"
 
-import { PORT, APP_HOME, SESSION_SECRET, MONGO_URI } from "./utils/secrets.js"
+import { PORT, HTTPS_PORT, SESSION_SECRET, MONGO_URI } from "./utils/secrets.js"
 import authRoutes from "./routes/auth.js"
 import booksRoutes from "./routes/books.js"
 
 const app = express()
 
-const port = PORT || 4005
+const port = PORT || 4000
+const httpsPort = HTTPS_PORT || 4001
 
 import "./config/passport.js";
 
@@ -69,6 +70,6 @@ app.listen(port, () => {
 
 https
   .createServer(credentials, app)
-  .listen(port, () => {
-    console.log(`HTTPS server started on port 8080`);
+  .listen(httpsPort, () => {
+    console.log(`HTTPS server started on port 4001`);
   })

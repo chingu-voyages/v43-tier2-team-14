@@ -2,6 +2,7 @@ import { config } from "dotenv"
 config()
 
 export const PORT = process.env.PORT
+export const HTTPS_PORT = process.env.HTTPS_PORT
 export const MONGO_URI = process.env.MONGO_URI
 export const GOOGLE_ID = process.env.GOOGLE_ID
 export const GOOGLE_SECRET = process.env.GOOGLE_SECRET
