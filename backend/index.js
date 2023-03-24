@@ -4,7 +4,8 @@ import session from "express-session"
 import passport from "passport";
 import MongoStore from 'connect-mongo'
 import helmet from "helmet";
-
+import https from "https"
+import fs from "fs"
 import dbConnection from "./utils/db.js"
 
 import { PORT, APP_HOME, SESSION_SECRET, MONGO_URI } from "./utils/secrets.js"
@@ -57,7 +58,17 @@ app.get("/", (req, res, next) => {
   res.send({ user: req.user })
 })
 
+const privateKey = fs.readFileSync('ssl/key.pem', 'utf8');
+const certificate = fs.readFileSync('ssl/cert.pem', 'utf8');
+const credentials = { key: privateKey, cert: certificate, passphrase: '??' };
+
 app.listen(port, () => {
   dbConnection()
-  console.log(`server started on port ${port}`)
+  console.log(`SERVER HTTP server started on port ${port}`)
 })
+
+https
+  .createServer(credentials, app)
+  .listen(port, () => {
+    console.log(`HTTPS server started on port 8080`);
+  })
