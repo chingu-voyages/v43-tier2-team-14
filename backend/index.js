@@ -8,7 +8,7 @@ import https from "https"
 import fs from "fs"
 import dbConnection from "./utils/db.js"
 
-import { PORT, , SESSION_SECRET, MONGO_URI } from "./utils/secrets.js"
+import { PORT, SESSION_SECRET, MONGO_URI } from "./utils/secrets.js"
 import authRoutes from "./routes/auth.js"
 import booksRoutes from "./routes/books.js"
 
