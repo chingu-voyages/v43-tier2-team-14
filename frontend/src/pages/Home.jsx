@@ -1,5 +1,3 @@
-import FetchingBooks from "../components/FetchingBooks";
-
 const Home = () => {
   return (
     <div className="App text-center mx-auto w-3/4">
@@ -9,7 +7,6 @@ const Home = () => {
       <a href="https://v43-tier2-team14-backend.onrender.com/auth/google">
         Login
       </a>
-      <FetchingBooks />
     </div>
   );
 };
