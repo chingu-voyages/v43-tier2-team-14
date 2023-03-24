@@ -63,13 +63,14 @@ const privateKey = fs.readFileSync('ssl/key.pem', 'utf8');
 const certificate = fs.readFileSync('ssl/cert.pem', 'utf8');
 const credentials = { key: privateKey, cert: certificate, passphrase: '??' };
 
-app.listen(port, () => {
-  dbConnection()
-  console.log(`SERVER HTTP server started on port ${port}`)
-})
+// app.listen(port, () => {
+//   dbConnection()
+//   console.log(`SERVER HTTP server started on port ${port}`)
+// })
 
 https
   .createServer(credentials, app)
   .listen(httpsPort, () => {
+    dbConnection()
     console.log(`HTTPS server started on port 4001`);
   })
