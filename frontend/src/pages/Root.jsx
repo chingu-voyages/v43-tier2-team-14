@@ -14,7 +14,7 @@ const Root = () => {
   }, [])
 
   return (
-    <main className="bg-bg-main py-36">
+    <main className="pt-14 flex flex-col">
       <Nav />
       <Outlet />
       <Footer />

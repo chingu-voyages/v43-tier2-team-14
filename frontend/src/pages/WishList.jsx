@@ -1,12 +1,14 @@
 import HomeBtn from "../components/UI/HomeBtn"
-import WishList, { dummyList } from "../components/WishList"
+import WishListWrapper, {
+  dummyList,
+} from "../components/wishList/WishListWrapper"
 import { AiOutlineHeart } from "react-icons/ai"
-import WishEmpty from "../components/WishEmpty"
+import WishEmpty from "../components/wishList/WishEmpty"
 
-const WishlistPage = () => {
+const WishList = () => {
   return (
     <>
-      <section className="mx-auto w-[50%]">
+      <section className="text-center">
         {dummyList.length === 0 ? (
           <>
             <div className="text-6xl">
@@ -15,11 +17,11 @@ const WishlistPage = () => {
             <WishEmpty />
           </>
         ) : (
-          <WishList />
+          <WishListWrapper />
         )}
         <HomeBtn />
       </section>
     </>
   )
 }
-export default WishlistPage
+export default WishList

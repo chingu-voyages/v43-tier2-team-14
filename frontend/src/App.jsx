@@ -7,7 +7,7 @@ import Register from "./pages/Register"
 import LogIn from "./pages/LogIn"
 import Error from "./pages/Error"
 import BookDetails from "./pages/bookDetails"
-import WishlistPage from "./pages/WishlistPage"
+import Wishlist from "./pages/Wishlist"
 import Library from "./pages/Library"
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
         },
         {
           path: "wishlist",
-          element: <WishlistPage />,
+          element: <Wishlist />,
         },
         {
           path: "cart",
