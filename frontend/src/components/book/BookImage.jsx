@@ -1,4 +1,4 @@
-const BookImage = () => {
+const BookImage = ({ singleBook }) => {
   return (
     <img
       decoding="async"

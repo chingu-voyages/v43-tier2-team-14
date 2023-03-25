@@ -7,6 +7,8 @@ export const bookStore = create((set) => ({
     const url =
       "https://v43-tier2-team14-backend.onrender.com/api/books?category=%7B%7D"
 
+    // &limit=50
+
     try {
       const response = await fetch(url)
       const data = await response.json()
@@ -15,8 +17,8 @@ export const bookStore = create((set) => ({
       console.log(error)
     }
   },
-  addToWishlist: () =>
+  addToWishlist: (item) =>
     set((state) => ({
-      // code here
+      wishList: [...state.wishList, item],
     })),
 }))
