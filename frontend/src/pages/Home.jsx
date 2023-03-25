@@ -26,9 +26,22 @@ const Home = () => {
       <h1 className="text-3xl bg-blue-300 font-bold underline">
         Welcome To The Main Project of Team-14
       </h1>
-      <a href="https://v43-tier2-team14-backend.onrender.com/auth/google">
-        Login
-      </a>
+      <div className="flex flex-col">
+        {user && (
+          <div>
+            Welcome <h1>{user.name}</h1>
+            <img className="w-20 mx-auto space-y-3" src={user.picture} alt="" />
+          </div>
+        )}
+      </div>
+      <div className="flex w-full gap-3">
+        <a href="https://v43-tier2-team14-backend.onrender.com/auth/google">
+          Login
+        </a>
+        <a href="https://v43-tier2-team14-backend.onrender.com/auth/logout">
+          Logout
+        </a>
+      </div>
     </div>
   );
 };
