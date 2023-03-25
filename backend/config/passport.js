@@ -12,10 +12,11 @@ passport.use(
       callbackURL: "/auth/google/callback",
     },
     async (accessToken, refreshToken, profile, done) => {
+      console.log(profile)
       const googleId = profile.id;
       const email = profile.emails[0].value
       const name = profile.displayName
-      const picture = profile.picture
+      const picture = profile.photos[0].value
       const provider = "google";
 
       const currentUser = await User.findOne({ googleId: googleId })
@@ -37,7 +38,7 @@ passport.use(
 );
 
 passport.serializeUser(function (user, done) {
-  return  done(null, user.id);
+  return done(null, user.id);
 });
 
 passport.deserializeUser(async function (id, done) {
