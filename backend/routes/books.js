@@ -8,7 +8,7 @@ router.get('/:id', async (req, res) => {
     const { id } = req.params
     const url = GOOGLE_BOOKAPI_URL
     const apiKey = GOOGLE_BOOKAPI
-    const fetchUrl = `${url}/${id}?key=${apiKey}`
+    const fetchUrl = `${url}/${id}&key=${apiKey}`
     console.log(id)
 
     console.log(fetchUrl)
