@@ -30,17 +30,17 @@ passport.use(
           picture: picture,
           provider: provider
         })
-        return done(null, newUser);
+        done(null, newUser);
       }
     }
   )
 );
 
 passport.serializeUser(function (user, done) {
-  done(null, user.id);
+  return  done(null, user.id);
 });
 
 passport.deserializeUser(async function (id, done) {
   const user = await User.findById(id)
-  done(null, user);
+  return done(null, user);
 });

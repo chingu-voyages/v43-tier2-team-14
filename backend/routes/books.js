@@ -1,12 +1,33 @@
 import express from "express"
 import fetch from "node-fetch"
+import { GOOGLE_BOOKAPI_URL, GOOGLE_BOOKAPI } from "../utils/secrets.js"
 const router = express.Router()
+
+router.get('/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+    const url = GOOGLE_BOOKAPI_URL
+    const apiKey = GOOGLE_BOOKAPI
+    const fetchUrl = `${url}/${id}?key=${apiKey}`
+    console.log(id)
+
+    console.log(fetchUrl)
+    const response = await fetch(fetchUrl)
+    console.log(response)
+    const data = await response.json()
+    console.log(data)
+    res.status(200).json({ message: "Book Fetched Successfully", Book: data })
+  } catch (error) {
+    res.status(400).json({ message: 'Error Fetching Book' })
+  }
+
+});
 
 router.get('/', async (req, res, next) => {
   try {
-    const url = process.env.GOOGLE_BOOKAPI_URL
-    const apiKey = process.env.GOOGLE_BOOKAPI
-    let fetchUrl = url
+    const url = GOOGLE_BOOKAPI_URL
+    const apiKey = GOOGLE_BOOKAPI
+    let fetchUrl = `${url}?q=`
 
     if ("category" in req.query) {
       const { category } = req.query
@@ -34,9 +55,11 @@ router.get('/', async (req, res, next) => {
     console.log(data)
     res.status(200).json({ categories: data })
   } catch (error) {
-    res.status(400).json({ error: error.message })
+    res.status(400).json({ message: error.message })
   }
 })
+
+
 
 // router.get('/:category', async (req, res, next) => {
 //   try {

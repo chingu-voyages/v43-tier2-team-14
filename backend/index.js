@@ -4,11 +4,10 @@ import session from "express-session"
 import passport from "passport";
 import MongoStore from 'connect-mongo'
 import helmet from "helmet";
-import https from "https"
-import fs from "fs"
+
 import dbConnection from "./utils/db.js"
 
-import { PORT, SESSION_SECRET, MONGO_URI } from "./utils/secrets.js"
+import { APP_HOME, PORT, SESSION_SECRET, MONGO_URI } from "./utils/secrets.js"
 import authRoutes from "./routes/auth.js"
 import booksRoutes from "./routes/books.js"
 
@@ -27,18 +26,19 @@ app.use(express.urlencoded({ extended: true }));
 // setting up cors access for just the frontend
 app.use(
   cors({
-    //origin: [APP_HOME,'http://localhost:3000','http://localhost:5173'],
+    origin: [APP_HOME, 'http://localhost:3000', 'http://localhost:5173'],
     origin: "*",
+    credentials: true,
     methods: "GET,POST,PUT,DELETE",
-    credentials: false,
+    credentials: true,
   })
 
   // setting up session cookie with logged in user's database id
 ); app.use(session({
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   secret: SESSION_SECRET,
-  cookie: { secure: true, maxAge: 60 * 60 * 1000 * 24 }, // 1 day
+  cookie: { httpOnly: true, secure: false, maxAge: (4 * 60 * 60 * 1000) },
   store: MongoStore.create({
     mongoUrl: MONGO_URI,
     ttl: 14 * 24 * 60 * 60,
@@ -53,10 +53,14 @@ app.use(passport.session());
 app.use("/api/books", booksRoutes)
 app.use('/auth', authRoutes)
 
-app.get("/", (req, res, next) => {
-  console.log(req.user)
-  res.send({ user: req.user })
+// app.get('/user', { credentials: 'same-origin' }, async (req, res, next) => {
+//   console.log(req.user)
+// })
+app.get('/', (req, res, next) => {
+  console.log('Hello World')
+  res.send(200).json("hello world")
 })
+
 
 app.listen(port, () => {
   dbConnection()
