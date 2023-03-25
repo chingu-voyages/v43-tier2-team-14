@@ -10,8 +10,7 @@ export const bookStore = create((set) => ({
     try {
       const response = await fetch(url)
       const data = await response.json()
-      set({ bookList: data })
-      console.log(data.categories.items)
+      set({ bookList: data.categories.items })
     } catch (error) {
       console.log(error)
     }

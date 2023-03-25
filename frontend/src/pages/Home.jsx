@@ -1,10 +1,17 @@
+import { Link } from "react-router-dom"
+import GenericBtns from "../components/UI/GenericBtns"
+import { ImBook } from "react-icons/im"
+
 const Home = () => {
   return (
-    <div className="App text-center mx-auto w-3/4">
-      <h1 className="text-3xl bg-blue-300 font-bold underline">
+    <section className="flex flex-col items-center">
+      <h1 className="text-3xl bg-blue-300 font-bold underline mb-4">
         Welcome To The Main Project of Team-14
       </h1>
-    </div>
+      <Link to="books">
+        <GenericBtns title="to library" icon={<ImBook />} />
+      </Link>
+    </section>
   )
 }
 export default Home

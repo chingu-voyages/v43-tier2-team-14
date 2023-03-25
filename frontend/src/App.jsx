@@ -8,6 +8,7 @@ import LogIn from "./pages/LogIn"
 import Error from "./pages/Error"
 import BookDetails from "./pages/bookDetails"
 import WishlistPage from "./pages/WishlistPage"
+import Library from "./pages/Library"
 
 function App() {
   const router = createBrowserRouter([
@@ -21,12 +22,16 @@ function App() {
           element: <Home />,
         },
         {
-          path: "login",
-          element: <LogIn />,
+          path: "books",
+          element: <Library />,
         },
         {
-          path: "book",
+          path: "books/:id",
           element: <BookDetails />,
+        },
+        {
+          path: "login",
+          element: <LogIn />,
         },
         {
           path: "wishlist",

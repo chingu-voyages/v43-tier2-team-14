@@ -1,3 +1,4 @@
+// btn with icon
 const GenericBtns = ({ title, icon }) => {
   return (
     <>
