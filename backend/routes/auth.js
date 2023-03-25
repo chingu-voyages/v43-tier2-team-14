@@ -1,20 +1,23 @@
 import express from "express"
 import passport from "passport";
 import { APP_HOME } from "../utils/secrets.js";
+import User from "../models/userModel.js";
 
 const router = express.Router()
 const CLIENT_URL = APP_HOME
+
 router.get("/login/success", (req, res) => {
   if (req.user) {
     res.status(200).json({
       success: true,
       message: "successful",
       user: req.user,
-      sessionStorage: req.user
-      //cookies: req.cookies
+      sessionStorage: req.user, 
+      // cookies: req.cookies
     });
   }
 });
+
 router.get("/login/failed", (req, res) => {
   res.status(401).json({
     success: false,
@@ -38,5 +41,7 @@ router.get(
     failureRedirect: "/login/failed",
   })
 );
+
+
 export default router
 
