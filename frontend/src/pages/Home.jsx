@@ -4,12 +4,9 @@ const Home = () => {
   const [user, setUser] = useState("");
 
   const fetchData = async () => {
-    const res = await fetch(
-      "https://v43-tier2-team14-backend.onrender.com/api/user",
-      {
-        credentials: "include",
-      }
-    );
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user`, {
+      credentials: "include",
+    });
     console.log(res);
     const userData = await res.json();
     console.log(userData);
@@ -35,12 +32,8 @@ const Home = () => {
         )}
       </div>
       <div className="flex w-full gap-3">
-        <a href="https://v43-tier2-team14-backend.onrender.com/auth/google">
-          Login
-        </a>
-        <a href="https://v43-tier2-team14-backend.onrender.com/auth/logout">
-          Logout
-        </a>
+        <a href={`${import.meta.env.VITE_BACKEND_URL}/api/user`}>Login</a>
+        <a href={`${import.meta.env.VITE_BACKEND_URL}/auth/logout`}>Login</a>
       </div>
     </div>
   );
