@@ -47,7 +47,7 @@ const Home = () => {
           Logout
         </Link>
       </div>
-    </div>
+  
     </section>
   )
 }
