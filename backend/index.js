@@ -26,11 +26,20 @@ app.use(express.urlencoded({ extended: true }));
 // setting up cors access for just the frontend
 app.use(
   cors({
-    origin: ['https://v43-tier2-team14-frontend.onrender.com', 'http://localhost:5173']
-    ,
+    origin: APP_HOME,
+    allowedHeaders: "Access-Control-Allow-Origin",
     credentials: true,
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
+  })
+);
+
+app.use(
+  cors({
+    origin: 'http://localhost:5174',
+    credentials: "include",
+    methods: "GET, POST, PATCH, DELETE, PUT",
+    allowedHeaders: "Access-Control-Allow-Origin",
   })
 );
 
@@ -70,6 +79,11 @@ app.get('/', (req, res, next) => {
   console.log('Hello World')
   res.send(200).json("hello world")
 })
+
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
 
 
 app.listen(port, () => {
