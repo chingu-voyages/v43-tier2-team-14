@@ -34,15 +34,6 @@ app.use(
   })
 );
 
-app.use(
-  cors({
-    origin: 'http://localhost:5174',
-    credentials: "include",
-    methods: "GET, POST, PATCH, DELETE, PUT",
-    allowedHeaders: "Access-Control-Allow-Origin",
-  })
-);
-
 // setting up session cookie with logged in user's database id
 app.use(session({
   resave: false,
