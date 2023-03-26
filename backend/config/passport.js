@@ -1,22 +1,22 @@
 import passport from "passport";
 import passportGoogle from "passport-google-oauth20";
 import User from "../models/userModel.js";
-import dotenv from "dotenv"
+import { GOOGLE_ID, GOOGLE_SECRET } from "../utils/secrets.js"
 const GoogleStrategy = passportGoogle.Strategy;
-dotenv.config()
 
 passport.use(
   new GoogleStrategy(
     {
-      clientID: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
+      clientID: GOOGLE_ID,
+      clientSecret: GOOGLE_SECRET,
       callbackURL: "/auth/google/callback",
     },
     async (accessToken, refreshToken, profile, done) => {
+      console.log(profile)
       const googleId = profile.id;
       const email = profile.emails[0].value
       const name = profile.displayName
-      const picture = profile.picture
+      const picture = profile.photos[0].value
       const provider = "google";
 
       const currentUser = await User.findOne({ googleId: googleId })
@@ -31,17 +31,17 @@ passport.use(
           picture: picture,
           provider: provider
         })
-        return done(null, newUser);
+        done(null, newUser);
       }
     }
   )
 );
 
 passport.serializeUser(function (user, done) {
-  done(null, user.id);
+  return done(null, user.id);
 });
 
 passport.deserializeUser(async function (id, done) {
   const user = await User.findById(id)
-  done(null, user);
+  return done(null, user);
 });
