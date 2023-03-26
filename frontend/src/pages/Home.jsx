@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Link from "react-router-dom";
 
 const Home = () => {
   const [user, setUser] = useState("");
@@ -32,8 +33,12 @@ const Home = () => {
         )}
       </div>
       <div className="flex w-full gap-3">
-        <a href={`${import.meta.env.VITE_BACKEND_URL}/auth/google`}>Login</a>
-        <a href={`${import.meta.env.VITE_BACKEND_URL}/auth/logout`}>Login</a>
+        <Link to={`${import.meta.env.VITE_BACKEND_URL}/auth/google`}>
+          Login
+        </Link>
+        <Link to={`${import.meta.env.VITE_BACKEND_URL}/auth/logout`}>
+          Logout
+        </Link>
       </div>
     </div>
   );
