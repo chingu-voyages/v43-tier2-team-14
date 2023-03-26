@@ -24,15 +24,15 @@ app.use(express.static('public', { dotfiles: 'allow' }))
 app.use(express.urlencoded({ extended: true }));
 
 // setting up cors access for just the frontend
-// app.use(
-//   cors({
-//     origin: "*"
-//     ,
-//     credentials: true,
-//     methods: "GET,POST,PUT,DELETE",
-//     credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    origin: APP_HOME,
+    allowedHeaders: "Access-Control-Allow-Origin",
+    credentials: true,
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
+  })
+);
 
 app.use(
   cors({
