@@ -32,7 +32,7 @@ const Home = () => {
         )}
       </div>
       <div className="flex w-full gap-3">
-        <a href={`${import.meta.env.VITE_BACKEND_URL}/auth/login`}>Login</a>
+        <a href={`${import.meta.env.VITE_BACKEND_URL}/auth/google`}>Login</a>
         <a href={`${import.meta.env.VITE_BACKEND_URL}/auth/logout`}>Login</a>
       </div>
     </div>
