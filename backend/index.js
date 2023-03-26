@@ -7,7 +7,7 @@ import helmet from "helmet";
 
 import dbConnection from "./utils/db.js"
 
-import { PORT, SESSION_SECRET, MONGO_URI } from "./utils/secrets.js"
+import { APP_HOME, PORT, SESSION_SECRET, MONGO_URI } from "./utils/secrets.js"
 import authRoutes from "./routes/auth.js"
 import booksRoutes from "./routes/books.js"
 
@@ -24,13 +24,22 @@ app.use(express.static('public', { dotfiles: 'allow' }))
 app.use(express.urlencoded({ extended: true }));
 
 // setting up cors access for just the frontend
+// app.use(
+//   cors({
+//     origin: "*"
+//     ,
+//     credentials: true,
+//     methods: "GET,POST,PUT,DELETE",
+//     credentials: true,
+//   })
+// );
+
 app.use(
   cors({
-    origin: ['https://v43-tier2-team14-frontend.onrender.com', 'http://localhost:5173']
-    ,
-    credentials: true,
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true,
+    origin: 'http://localhost:5174',
+    credentials: "include",
+    methods: "GET, POST, PATCH, DELETE, PUT",
+    allowedHeaders: "Access-Control-Allow-Origin",
   })
 );
 
@@ -47,6 +56,14 @@ app.use(session({
   })
 }));
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', APP_HOME);
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
+
 // initializing passportjs instance with its session  
 app.use(passport.initialize());
 app.use(passport.session());
@@ -62,6 +79,11 @@ app.get('/', (req, res, next) => {
   console.log('Hello World')
   res.send(200).json("hello world")
 })
+
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
 
 
 app.listen(port, () => {

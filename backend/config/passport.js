@@ -10,9 +10,8 @@ passport.use(
       clientID: GOOGLE_ID,
       clientSecret: GOOGLE_SECRET,
       callbackURL: "/auth/google/callback",
-    },
+      },
     async (accessToken, refreshToken, profile, done) => {
-      console.log(profile)
       const googleId = profile.id;
       const email = profile.emails[0].value
       const name = profile.displayName
@@ -20,9 +19,9 @@ passport.use(
       const provider = "google";
 
       const currentUser = await User.findOne({ googleId: googleId })
-
+      console.log(currentUser)
       if (currentUser) {
-        done(null, currentUser);
+        return done(null, currentUser);
       } else {
         const newUser = await User.create({
           googleId: googleId,
@@ -31,17 +30,16 @@ passport.use(
           picture: picture,
           provider: provider
         })
-        done(null, newUser);
+        return done(null, newUser);
       }
     }
   )
 );
 
 passport.serializeUser(function (user, done) {
-  return done(null, user.id);
+  done(null, user);
 });
 
-passport.deserializeUser(async function (id, done) {
-  const user = await User.findById(id)
-  return done(null, user);
+passport.deserializeUser(function (obj, done) {
+  done(null, obj);
 });
