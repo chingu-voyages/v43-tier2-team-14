@@ -1,11 +1,15 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Root from "./pages/Root";
-import Home from "./pages/Home";
-import Cart from "./pages/Cart";
-import Register from "./pages/Register";
-import LogIn from "./pages/LogIn";
-import Error from "./pages/Error";
 
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import "./App.css"
+import Root from "./pages/Root"
+import Home from "./pages/Home"
+import Cart from "./pages/Cart"
+import Register from "./pages/Register"
+import LogIn from "./pages/LogIn"
+import Error from "./pages/Error"
+import BookDetails from "./pages/bookDetails"
+import Wishlist from "./pages/Wishlist"
+import Library from "./pages/Library"
 import "./App.css";
 
 function App() {
@@ -20,8 +24,20 @@ function App() {
           element: <Home />,
         },
         {
+          path: "books",
+          element: <Library />,
+        },
+        {
+          path: "books/:id",
+          element: <BookDetails />,
+        },
+        {
           path: "login",
           element: <LogIn />,
+        },
+        {
+          path: "wishlist",
+          element: <Wishlist />,
         },
         {
           path: "cart",
@@ -33,9 +49,9 @@ function App() {
         },
       ],
     },
-  ]);
+  ])
 
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={router} />
 }
 
-export default App;
+export default App
