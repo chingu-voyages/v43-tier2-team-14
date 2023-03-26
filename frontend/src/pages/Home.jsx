@@ -40,12 +40,8 @@ const Home = () => {
         )}
       </div>
       <div className="flex w-full gap-3">
-        <Link to={`${import.meta.env.VITE_BACKEND_URL}/auth/google`}>
-          Login
-        </Link>
-        <Link to={`${import.meta.env.VITE_BACKEND_URL}/auth/logout`}>
-          Logout
-        </Link>
+        <a href={`${import.meta.env.VITE_BACKEND_URL}/auth/google`}>Login</a>
+        <a href={`${import.meta.env.VITE_BACKEND_URL}/auth/logout`}>Logout</a>
       </div>
   
     </section>
