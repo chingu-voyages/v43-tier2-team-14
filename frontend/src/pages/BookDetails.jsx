@@ -1,10 +1,10 @@
-import Book from "../components/book/Book"
+import Book from "../components/book/Book";
 
 const BookDetails = () => {
   return (
-    <>
+    <div className="col-start-3 col-span-full">
       <Book />
-    </>
-  )
-}
-export default BookDetails
+    </div>
+  );
+};
+export default BookDetails;
