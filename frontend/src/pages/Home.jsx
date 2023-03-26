@@ -1,9 +1,5 @@
-
-import { Link } from "react-router-dom"
-import GenericBtns from "../components/UI/GenericBtns"
-import { ImBook } from "react-icons/im"
 import { useEffect, useState } from "react";
-
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [user, setUser] = useState("");
@@ -24,14 +20,11 @@ const Home = () => {
 
   console.log(user);
   return (
-    <section className="flex flex-col items-center">
-      <h1 className="text-3xl bg-blue-300 font-bold underline mb-4">
+    <div className="App text-center mx-auto w-3/4">
+      <h1 className="text-3xl bg-blue-300 font-bold underline">
         Welcome To The Main Project of Team-14
       </h1>
-      <Link to="books">
-        <GenericBtns title="to library" icon={<ImBook />} />
-      </Link>
-       <div className="flex flex-col">
+      <div className="flex flex-col">
         {user && (
           <div>
             Welcome <h1>{user.name}</h1>
@@ -48,8 +41,6 @@ const Home = () => {
         </Link>
       </div>
     </div>
-    </section>
-  )
-}
-export default Home
-
+  );
+};
+export default Home;
