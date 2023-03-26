@@ -6,8 +6,6 @@ import BookBtns from "./BookBtns"
 import GenericBtns from "../UI/GenericBtns"
 
 const BookBody = ({ singleBook: { title, description, pageCount } }) => {
-  console.log(pageCount)
-
   return (
     <article className="book-details flex flex-col mt-4 space-y-4">
       <h2 className="text-6xl text-center lg:text-left">{title}</h2>

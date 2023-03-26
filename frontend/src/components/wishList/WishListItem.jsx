@@ -1,14 +1,30 @@
 import { CiBookmarkRemove } from "react-icons/ci"
+import { bookStore } from "../../features/bookStore"
 
-const WishListItem = ({ b }) => {
+const WishListItem = ({
+  title,
+  id,
+  pageCount,
+  authors,
+  description,
+  imageLinks,
+}) => {
+  const removeFromWishlist = bookStore((state) => state.removeFromWishlist)
+
+  const removeItemFromWishlist = (id) => {
+    removeFromWishlist(id)
+  }
+
   return (
     <article className="w-full md:w-3/4 mx-auto shadow-md bg-zinc-100 flex justify-between items-center mb-6 p-4 border-2 rounded-md hover:shadow-sm ">
-      <h2 className="title">book name: {b}</h2>
-      <p className="desc">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea fugit neque
-        quas iure nostrum? Optio?
-      </p>
-      <div className="cursor-pointer text-3xl duration-300 hover:text-white hover:bg-bg-btn">
+      <img src={imageLinks.thumbnail} alt="" />
+      <h2>{title}</h2>
+      <span>{authors}</span>
+      <p>{pageCount} pages</p>
+      <div
+        className="cursor-pointer text-3xl duration-300 hover:text-white hover:bg-bg-btn"
+        onClick={() => removeItemFromWishlist(id)}
+      >
         <CiBookmarkRemove />
       </div>
     </article>

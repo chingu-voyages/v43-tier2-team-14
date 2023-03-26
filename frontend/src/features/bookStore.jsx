@@ -1,12 +1,12 @@
 import { create } from "zustand"
+import { devtools } from "zustand/middleware"
+import { persist } from "zustand/middleware"
 
-export const bookStore = create((set) => ({
+const store = (set) => ({
   bookList: [],
   wishList: [],
   getBooks: async () => {
-    const url =
-      "https://v43-tier2-team14-backend.onrender.com/api/books?category=%7B%7D"
-
+    const url = "https://v43-tier2-team14-backend.onrender.com/api/books/"
     // &limit=50
 
     try {
@@ -21,4 +21,12 @@ export const bookStore = create((set) => ({
     set((state) => ({
       wishList: [...state.wishList, item],
     })),
-}))
+  removeFromWishlist: (id) =>
+    set((state) => ({
+      wishList: state.wishList.filter((item) => {
+        return item.id !== id
+      }),
+    })),
+})
+
+export const bookStore = create(persist(devtools(store), { name: "bookStore" }))

@@ -1,24 +1,12 @@
 import HomeBtn from "../components/UI/HomeBtn"
-import WishListWrapper, {
-  dummyList,
-} from "../components/wishList/WishListWrapper"
-import { AiOutlineHeart } from "react-icons/ai"
-import WishEmpty from "../components/wishList/WishEmpty"
+import WishListWrapper from "../components/wishList/WishListWrapper"
+import { bookStore } from "../features/bookStore"
 
 const WishList = () => {
   return (
     <>
       <section className="text-center">
-        {dummyList.length === 0 ? (
-          <>
-            <div className="text-6xl">
-              <AiOutlineHeart className="mx-auto opacity-10" />
-            </div>
-            <WishEmpty />
-          </>
-        ) : (
-          <WishListWrapper />
-        )}
+        <WishListWrapper />
         <HomeBtn />
       </section>
     </>
