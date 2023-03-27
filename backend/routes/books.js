@@ -8,12 +8,10 @@ router.get('/:id', async (req, res) => {
     const { id } = req.params
     const url = GOOGLE_BOOKAPI_URL
     const apiKey = GOOGLE_BOOKAPI
-    const fetchUrl = `${url}/${id}؟key=${apiKey}`
-    console.log(id)
+    const fetchUrl = `${url}/${id}?key=${apiKey}`
 
     console.log(fetchUrl)
     const response = await fetch(fetchUrl)
-    console.log(response)
     const data = await response.json()
     console.log(data)
     res.status(200).json({ message: "Book Fetched Successfully", Book: data })
@@ -25,13 +23,14 @@ router.get('/:id', async (req, res) => {
 
 router.get('/', async (req, res, next) => {
   try {
+    console.log("triggered books api")
     const url = GOOGLE_BOOKAPI_URL
     const apiKey = GOOGLE_BOOKAPI
-    let fetchUrl = `${url}?q=`
+    let fetchUrl = `${url}`
 
     if ("category" in req.query) {
       const { category } = req.query
-      fetchUrl += `${category}`
+      fetchUrl += `?q=${category}`
     }
 
     if ("lang" in req.query) {
@@ -50,7 +49,6 @@ router.get('/', async (req, res, next) => {
     }
     console.log(fetchUrl)
     const response = await fetch(`${fetchUrl}&key=${apiKey}`)
-    console.log(response)
     const data = await response.json()
     console.log(data)
     res.status(200).json({ categories: data })

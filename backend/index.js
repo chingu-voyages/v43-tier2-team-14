@@ -23,16 +23,6 @@ app.use(express.json())
 app.use(express.static('public', { dotfiles: 'allow' }))
 app.use(express.urlencoded({ extended: true }));
 
-// setting up cors access for just the frontend
-app.use(
-  cors({
-    origin: APP_HOME,
-    allowedHeaders: "Access-Control-Allow-Origin",
-    credentials: true,
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true,
-  })
-);
 
 // setting up session cookie with logged in user's database id
 app.use(session({
@@ -47,11 +37,16 @@ app.use(session({
   })
 }));
 
+app.use(cors({
+  origin: APP_HOME,
+  credentials: true,
+  methods: "GET,POST,PUT,DELETE",
+  credentials: true,
+}));
+
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', APP_HOME);
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  res.header('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Origin', `${APP_HOME}`);
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
   next();
 });
 
@@ -63,7 +58,8 @@ app.use("/api/books", booksRoutes)
 app.use('/auth', authRoutes)
 
 app.get('/api/user', (req, res, next) => {
-  res.json(req.user);
+  // res.json(req.user);
+  console.log(req.user)
 });
 
 app.get('/', (req, res, next) => {

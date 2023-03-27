@@ -1,20 +1,26 @@
-import { create } from "zustand"
-import { devtools } from "zustand/middleware"
-import { persist } from "zustand/middleware"
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 
 const store = (set) => ({
   bookList: [],
   wishList: [],
   getBooks: async () => {
-    const url = "https://v43-tier2-team14-backend.onrender.com/api/books/"
-    // &limit=50
+    const url = `http://localhost:4000/api/books`;
+    console.log(url);
+    // must add category name for it to work
+    // "http://localhost:4000/api/books?category=science+fiction";
+    // ?category=category name
+    // &limit=40 maximum 40 books
+    // &lang=ar
+    // &orderBy=newest or relevance
 
     try {
-      const response = await fetch(url)
-      const data = await response.json()
-      set({ bookList: data.categories.items })
+      const response = await fetch(url);
+      const data = await response.json();
+      set({ bookList: data.categories.items });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   },
   addToWishlist: (item) =>
@@ -24,9 +30,11 @@ const store = (set) => ({
   removeFromWishlist: (id) =>
     set((state) => ({
       wishList: state.wishList.filter((item) => {
-        return item.id !== id
+        return item.id !== id;
       }),
     })),
-})
+});
 
-export const bookStore = create(persist(devtools(store), { name: "bookStore" }))
+export const bookStore = create(
+  persist(devtools(store), { name: "bookStore" })
+);
