@@ -1,12 +1,8 @@
-import { create } from "zustand";
-import { devtools } from "zustand/middleware";
-import { persist } from "zustand/middleware";
-
 const store = (set) => ({
   user: [],
   getUserData: async () => {
-    const url = `${import.meta.env.VITE_BACKEND_URL}/api/user`;
-    console.log(url);
+    const url = `http://localhost:4000/api/user`;
+
     try {
       const res = await fetch(url, {
         credentials: "include",
@@ -25,7 +21,7 @@ const store = (set) => ({
   //   set((state) => ({
   //     wishList: [...state.wishList, item],
   //   })),
-});
+}); // <-- add closing brace here
 
 export const userStore = create(
   persist(devtools(store), { name: "userStore" })
