@@ -8,7 +8,6 @@ const handleLogout = () => {
 
 const Search = () => {
   const user = userStore((state) => state.user);
-  console.log(user);
   return (
     <div className="col-start-3 col-span-full row-start-1 w-full py-5">
       <div className="flex justify-between items-center">

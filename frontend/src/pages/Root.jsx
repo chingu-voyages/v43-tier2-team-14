@@ -1,10 +1,9 @@
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import Search from "../components/Search";
 import Footer from "../components/Footer";
 import { bookStore } from "../features/bookStore";
 import Sidebar from "../components/Sidebar";
-import {userStore} from "../features/userStore";
+import { userStore } from "../features/userStore";
 
 const Root = () => {
   const getBooks = bookStore((state) => state.getBooks);
