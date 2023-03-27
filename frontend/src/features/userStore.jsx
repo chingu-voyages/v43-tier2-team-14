@@ -5,8 +5,8 @@ import { persist } from "zustand/middleware";
 const store = (set) => ({
   user: [],
   getUserData: async () => {
-    const url = `http://localhost:4000/api/user`;
-
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/user`;
+    console.log(url);
     try {
       const res = await fetch(url, {
         credentials: "include",
