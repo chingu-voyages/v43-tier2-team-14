@@ -1,7 +1,14 @@
 import GenericBtns from "../components/UI/GenericBtns";
 import { IoSearchOutline } from "react-icons/io5";
+import { userStore } from "../features/userStore";
+
+const handleLogout = () => {
+  userStore((state) => state.logout());
+};
 
 const Search = () => {
+  const user = userStore((state) => state.user);
+  console.log(user);
   return (
     <div className="col-start-3 col-span-full row-start-1 w-full py-5">
       <div className="flex justify-between items-center">
@@ -15,11 +22,22 @@ const Search = () => {
         </div>
 
         <div className="px-5">
-          <button className="flex items-center bg-bg-btn text-text-btn rounded-full px-6 py-2 hover:text-white">
-            <a href={`${import.meta.env.VITE_BACKEND_URL}/auth/google`}>
-              Login
-            </a>
-          </button>
+          {!user ? (
+            <button className="flex items-center bg-bg-btn text-text-btn rounded-full px-6 py-2 hover:text-white">
+              <a href={`${import.meta.env.VITE_BACKEND_URL}/auth/google`}>
+                Login
+              </a>
+            </button>
+          ) : (
+            <button
+              className="flex items-center bg-bg-btn text-text-btn rounded-full px-6 py-2 hover:text-white"
+              onClick={handleLogout}
+            >
+              <a href={`${import.meta.env.VITE_BACKEND_URL}/auth/logout`}>
+                Logout
+              </a>
+            </button>
+          )}
         </div>
       </div>
     </div>

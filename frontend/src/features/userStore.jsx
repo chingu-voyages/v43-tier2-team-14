@@ -1,32 +1,21 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
-import { persist } from "zustand/middleware";
 
-const store = (set) => ({
-  user: [],
+export const userStore = create((set) => ({
+  user: null,
   getUserData: async () => {
-    const url = `${import.meta.env.VITE_BACKEND_URL}/api/user`;
-    console.log(url);
     try {
-      const res = await fetch(url, {
+      const url = `${import.meta.env.VITE_BACKEND_URL}`;
+      const res = await fetch(`${url}/api/user`, {
         credentials: "include",
       });
-      const userData = await res.json();
+      const resData = await res.text();
+      const userData = resData ? JSON.parse(resData) : null;
       console.log(userData);
       set({ user: userData });
-      console.log(user);
     } catch (error) {
       console.error(error);
     }
   },
-
-  //function if you want to mutate the state
-  // addToWishlist: (item) =>
-  //   set((state) => ({
-  //     wishList: [...state.wishList, item],
-  //   })),
-});
-
-export const userStore = create(
-  persist(devtools(store), { name: "userStore" })
-);
+  logout: async () => set({ user: null }),
+}));

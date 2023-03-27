@@ -4,13 +4,13 @@ import Search from "../components/Search";
 import Footer from "../components/Footer";
 import { bookStore } from "../features/bookStore";
 import Sidebar from "../components/Sidebar";
-import { userStore } from "../features/userStore";
+import {userStore} from "../features/userStore";
 
 const Root = () => {
   const getBooks = bookStore((state) => state.getBooks);
   const bookList = bookStore((state) => state.bookList);
-  const getUserData = userStore((state) => state.getUserData);
   const user = userStore((state) => state.user);
+  const getUserData = userStore((state) => state.getUserData);
 
   useEffect(() => {
     getBooks();

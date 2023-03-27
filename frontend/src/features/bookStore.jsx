@@ -6,7 +6,9 @@ const store = (set) => ({
   bookList: [],
   wishList: [],
   getBooks: async () => {
-    const url = `${import.meta.env.VITE_BACKEND_URL}/api/books`;
+    const url = `${
+      import.meta.env.VITE_BACKEND_URL
+    }/api/books?category=science+fiction`;
     console.log(url);
     // must add category name for it to work
     // "http://localhost:4000/api/books?category=science+fiction";

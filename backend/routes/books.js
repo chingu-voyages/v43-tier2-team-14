@@ -23,14 +23,13 @@ router.get('/:id', async (req, res) => {
 
 router.get('/', async (req, res, next) => {
   try {
-    console.log("triggered books api")
     const url = GOOGLE_BOOKAPI_URL
     const apiKey = GOOGLE_BOOKAPI
-    let fetchUrl = `${url}`
+    let fetchUrl = `${url}?q=`
 
     if ("category" in req.query) {
       const { category } = req.query
-      fetchUrl += `?q=${category}`
+      fetchUrl += `${category}`
     }
 
     if ("lang" in req.query) {
@@ -49,6 +48,7 @@ router.get('/', async (req, res, next) => {
     }
     console.log(fetchUrl)
     const response = await fetch(`${fetchUrl}&key=${apiKey}`)
+    console.log(response)
     const data = await response.json()
     console.log(data)
     res.status(200).json({ categories: data })
@@ -56,73 +56,5 @@ router.get('/', async (req, res, next) => {
     res.status(400).json({ message: error.message })
   }
 })
-
-
-
-// router.get('/:category', async (req, res, next) => {
-//   try {
-//     const url = process.env.GOOGLE_BOOKAPI_URL
-//     const apiKey = process.env.GOOGLE_BOOKAPI
-
-//     const { category } = req.params
-
-//     const resData = await fetch(`${ url }${ category }& key=${ apiKey } `)
-//     const data = await resData.json()
-//     res.status(200).json({ category: data })
-//   } catch (error) {
-//     res.status(400).json({ error: error.message })
-//   }
-// })
-// // langRestrict
-
-// router.get('/:lang/:category', async (req, res, next) => {
-//   try {
-//     const url = process.env.GOOGLE_BOOKAPI_URL
-//     const apiKey = process.env.GOOGLE_BOOKAPI
-
-//     const { category, lang } = req.params
-
-//     const resData = await fetch(`${ url }${ category }& langRestrict=${ lang }& key=${ apiKey } `)
-//     const data = await resData.json()
-//     res.status(200).json({ category: data })
-//   } catch (error) {
-//     res.status(400).json({ error: error.message })
-//   }
-// })
-
-// router.get('/:category/:number', async (req, res, next) => {
-//   try {
-//     const url = process.env.GOOGLE_BOOKAPI_URL
-//     const apiKey = process.env.GOOGLE_BOOKAPI
-
-//     const { category, number } = req.params
-//     console.log({ category, number })
-
-//     const resData = await fetch(`${ url }${ category }& maxResults=${ number }& key=${ apiKey } `)
-//     const data = await resData.json()
-//     res.status(200).json({ category: data })
-
-//   } catch (error) {
-//     res.status(400).json({ error: error.message })
-//   }
-// })
-
-// router.get('/:lang/:category/:number', async (req, res, next) => {
-//   try {
-//     const url = process.env.GOOGLE_BOOKAPI_URL
-//     const apiKey = process.env.GOOGLE_BOOKAPI
-
-//     const { category, number, lang } = req.params
-//     console.log({ category, number })
-
-//     const resData = await fetch(`${ url }${ category }& maxResults=${ number }&& langRestrict=${ lang }& key=${ apiKey } `)
-//     const data = await resData.json()
-//     res.status(200).json({ category: data })
-
-//   } catch (error) {
-//     res.status(400).json({ error: error.message })
-//   }
-// })
-
 
 export default router
