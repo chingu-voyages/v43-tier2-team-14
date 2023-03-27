@@ -1,11 +1,11 @@
-import HomeBtn from "../components/UI/HomeBtn"
+import HomeBtn from "../components/UI/HomeBtn";
 
 const Cart = () => {
   return (
-    <>
-      <div className="text-5xl font-bold">Cart page</div>
+    <section className="col-start-3 col-span-full">
+      <div className="text-5xl font-bold ">Cart page</div>
       <HomeBtn />
-    </>
-  )
-}
-export default Cart
+    </section>
+  );
+};
+export default Cart;

@@ -24,3 +24,8 @@ aside a.active span{
   color:white;
   background-color: #ef4444;
 }
+
+section{
+ grid-column-start: 3;
+ grid-column: 1/-1; 
+}
