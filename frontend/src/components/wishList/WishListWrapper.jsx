@@ -1,12 +1,12 @@
-import { bookStore } from "../../features/bookStore"
-import WishListItem from "./WishListItem"
-import { AiOutlineHeart } from "react-icons/ai"
-import WishEmpty from "./WishEmpty"
+import { bookStore } from "../../features/bookStore";
+import WishListItem from "./WishListItem";
+import { AiOutlineHeart } from "react-icons/ai";
+import WishEmpty from "./WishEmpty";
 
-export const dummyList = ["item one", "item two", "item three"]
+export const dummyList = ["item one", "item two", "item three"];
 
 const WishListWrapper = () => {
-  const wishList = bookStore((state) => state.wishList)
+  const wishList = bookStore((state) => state.wishList);
 
   return (
     <>
@@ -21,15 +21,15 @@ const WishListWrapper = () => {
       ) : (
         <>
           <div className="text-6xl">
-            <AiOutlineHeart className="mx-auto opacity-10" />
+            <AiOutlineHeart className="opacity-10" />
           </div>
           <WishEmpty />
         </>
       )}
     </>
-  )
-}
-export default WishListWrapper
+  );
+};
+export default WishListWrapper;
 
 /*   {!wishList.length ? (
           <>

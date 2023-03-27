@@ -2,9 +2,9 @@ import Book from "../components/book/Book";
 
 const BookDetails = () => {
   return (
-    <div className="col-start-3 col-span-full">
+    <section className="col-start-3 col-span-full">
       <Book />
-    </div>
+    </section>
   );
 };
 export default BookDetails;

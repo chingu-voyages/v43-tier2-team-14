@@ -1,13 +1,10 @@
-import HomeBtn from "../components/UI/HomeBtn"
+import NoContent from "../components/NoContent";
 
 const Error = () => {
   return (
     <>
-      <p className="text-3xl">
-        OOPS! the page you requested is not available now!
-      </p>
-      <HomeBtn />
+      <NoContent message="  OOPS! the page you requested is not available now!" />
     </>
-  )
-}
-export default Error
+  );
+};
+export default Error;

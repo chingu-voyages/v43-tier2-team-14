@@ -1,10 +1,10 @@
-import { AiOutlineHome } from "react-icons/ai"
-import { BsBookmark } from "react-icons/bs"
-import { FiSettings } from "react-icons/fi"
-import { GiBookshelf } from "react-icons/gi"
-import { BiUserCircle } from "react-icons/bi"
-import { AiOutlineShoppingCart } from "react-icons/ai"
-import SidebarItem from "./SidebarItem"
+import { AiOutlineHome } from "react-icons/ai";
+import { BsBookmark } from "react-icons/bs";
+import { FiSettings } from "react-icons/fi";
+import { GiBookshelf } from "react-icons/gi";
+import { BiUserCircle } from "react-icons/bi";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import SidebarItem from "./SidebarItem";
 
 const Sidebar = () => {
   return (
@@ -16,8 +16,8 @@ const Sidebar = () => {
       <SidebarItem icon={<BiUserCircle />} path="/logIn" />
       <SidebarItem icon={<FiSettings />} path="/register" />
     </aside>
-  )
-}
-GiBookshelf
+  );
+};
+GiBookshelf;
 
-export default Sidebar
+export default Sidebar;
