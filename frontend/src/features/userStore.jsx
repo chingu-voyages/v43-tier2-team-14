@@ -9,6 +9,7 @@ export const userStore = create((set) => ({
       const res = await fetch(`${url}/api/user`, {
         credentials: "include",
       });
+      console.log(url);
       const resData = await res.text();
       const userData = resData ? JSON.parse(resData) : null;
       console.log(userData);
