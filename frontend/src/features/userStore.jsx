@@ -3,21 +3,15 @@ import { devtools } from "zustand/middleware";
 
 export const userStore = create((set) => ({
   user: null,
-  getUserData: async () => {
-    try {
-      const url = `${import.meta.env.VITE_BACKEND_URL}`;
-      const res = await fetch(`${url}/api/user`, {
-        credentials: "include",
-      });
-      console.log("Response:", res);
-      const resData = await res.text();
-      console.log("Response data:", resData);
-      const userData = resData ? JSON.parse(resData) : null;
-      console.log("User data:", userData);
-      set({ user: userData });
-    } catch (error) {
-      console.error(error);
-    }
+  fetchUserData: async () => {
+    const url = `${import.meta.env.VITE_BACKEND_URL}`;
+    const res = await fetch(`${url}/api/user`, {
+      credentials: "include",
+    });
+    const resData = await res.text();
+    const userData = resData ? JSON.parse(resData) : null;
+    console.log("User data:", userData);
+    set({ user: userData });
   },
   logout: async () => set({ user: null }),
 }));
