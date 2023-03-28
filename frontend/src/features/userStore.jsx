@@ -4,9 +4,11 @@ import { devtools } from "zustand/middleware";
 export const userStore = create((set) => ({
   user: null,
   fetchUserData: async () => {
+    const header = new Headers({ "Access-Control-Allow-Origin": "*" });
     const url = `${import.meta.env.VITE_BACKEND_URL}`;
     const response = await fetch(`${url}/api/user`, {
       credentials: "include",
+      headers: header,
     });
     const data = await response.json();
     set({ user: data });
