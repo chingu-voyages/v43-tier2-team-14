@@ -8,13 +8,14 @@ import { userStore } from "../features/userStore";
 const Root = () => {
   const getBooks = bookStore((state) => state.getBooks);
   const bookList = bookStore((state) => state.bookList);
-  const getUserData = userStore((state) => state.fetchUserData);
   const user = userStore((state) => state.user);
+  const fetchUser = userStore((state) => state.fetchUserData);
 
   useEffect(() => {
     getBooks();
     console.log(bookList);
-    !user && getUserData();
+    fetchUser();
+    console.log(user);
   }, []);
 
   return (
