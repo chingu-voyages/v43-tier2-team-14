@@ -62,11 +62,12 @@ app.get('/api/user', (req, res, next) => {
   // res.json(req.user);
   res.send(req.user);
   console.log(req.user)
+  console.log(req.session.passport)
 });
 
 app.get('/', (req, res, next) => {
   console.log('Hello World')
-  res.send(200).json("hello world")
+  res.status(200).json("hello world")
 })
 
 app.use(function (err, req, res, next) {

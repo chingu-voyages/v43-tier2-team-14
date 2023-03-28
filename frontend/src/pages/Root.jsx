@@ -6,16 +6,16 @@ import Sidebar from "../components/Sidebar";
 import { userStore } from "../features/userStore";
 
 const Root = () => {
-  const getBooks = bookStore((state) => state.getBooks);
-  const bookList = bookStore((state) => state.bookList);
+  // const getBooks = bookStore((state) => state.getBooks);
+  // const bookList = bookStore((state) => state.bookList);
   const getUserData = userStore((state) => state.fetchUserData);
   const user = userStore((state) => state.user);
 
   useEffect(() => {
-    getBooks();
-    getUserData();
-    console.log(bookList);
-    console.log(user);
+    // getBooks();
+    // getUserData();
+    // console.log(bookList);
+    !user && getUserData();
   }, []);
 
   return (
