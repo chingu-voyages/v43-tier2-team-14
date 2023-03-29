@@ -19,5 +19,7 @@ export const userStore = create((set) => ({
       console.log(error);
     }
   },
+  setUser: (newUser) => set({ user: newUser }),
   logout: async () => set({ user: {} }),
 }));
+

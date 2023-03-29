@@ -1,12 +1,23 @@
+import { useState } from "react";
 import GenericBtns from "../components/UI/GenericBtns";
 import { IoSearchOutline } from "react-icons/io5";
 import { userStore } from "../features/userStore";
 
-const handleLogout = () => {
-  userStore((state) => state.logout());
-};
-
 const Search = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleSignin = () => {
+    setIsLoggedIn(true);
+    const fetchUserData = userStore((state) => state.fetchUserData);
+    const changeUser = (newUser) => userStore.setState({ user: newUser });
+    changeUser(user);
+  };
+
+  const handleLogout = () => {
+    userStore((state) => state.logout());
+    setIsLoggedIn(false);
+  };
+
   const user = userStore((state) => state.user);
   console.log(user);
   return (
@@ -23,7 +34,10 @@ const Search = () => {
 
         <div className="px-5">
           {!user ? (
-            <button className="flex items-center bg-bg-btn text-text-btn rounded-full px-6 py-2 hover:text-white">
+            <button
+              className="flex items-center bg-bg-btn text-text-btn rounded-full px-6 py-2 hover:text-white"
+              onClick={handleSignin}
+            >
               <a href={`${import.meta.env.VITE_BACKEND_URL}/auth/google`}>
                 Login
               </a>
