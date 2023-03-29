@@ -1,19 +1,22 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
+import axios from "axios";
 
 export const userStore = create((set) => ({
   user: null,
   fetchUserData: async () => {
-    const response = await fetch(
-      `${import.meta.env.VITE_BACKEND_URL}/api/user`,
-      {
-        credentials: "include",
-      }
-    );
-    const resData = await response.text();
-    const userData = resData ? JSON.parse(resData) : null;
-    console.log(userData);
-    set({ user: userData });
+    try {
+      const userData = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/user`,
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(userData);
+      set({ user: userData });
+    } catch (error) {
+      console.log(error);
+    }
   },
   logout: async () => set({ user: null }),
 }));
