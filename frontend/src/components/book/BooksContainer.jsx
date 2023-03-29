@@ -1,9 +1,7 @@
 import { bookStore } from "../../features/bookStore"
 import BookCard from "./BookCard"
 import { Link } from "react-router-dom";
-import { bookStore } from "../../features/bookStore";
 import NoContent from "../NoContent";
-import BookCard from "./BookCard";
 
 const BooksContainer = () => {
   const bookList = bookStore((state) => state.bookList);
