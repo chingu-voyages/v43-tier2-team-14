@@ -8,33 +8,16 @@ import axios from "axios";
 
 const Root = () => {
   const [userData, setUserData] = useState({});
-  const getBooks = bookStore((state) => state.getBooks);
-  const bookList = bookStore((state) => state.bookList);
+  // const getBooks = bookStore((state) => state.getBooks);
+  // const bookList = bookStore((state) => state.bookList);
   const user = userStore((state) => state.user);
-  const updateUser = userStore((state) => state.updateUser);
-
-  const fetchUserData = async () => {
-    try {
-      const userInfo = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/api/user`,
-        {
-          withCredentials: true,
-          credentials: "include",
-        }
-      );
-      console.log(userInfo);
-      setUserData(userInfo);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const fetchUserData = userStore((state) => state.fetchUserData);
+  console.log(user);
 
   useEffect(() => {
-    getBooks();
-    console.log(bookList);
+    // getBooks();
+    // console.log(bookList);
     fetchUserData();
-    console.log(userData);
-    updateUser(userData);
   }, []);
 
   return (

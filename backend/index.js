@@ -60,15 +60,28 @@ app.use('/auth', authRoutes)
 
 app.get('/api/user', (req, res, next) => {
   // res.json(req.user);
-  res.json(req.user);
+  res.send(req.user);
   console.log(req.user)
-  console.log(req.session.passport)
 });
 
 app.get('/', (req, res, next) => {
   console.log('Hello World')
   res.status(200).json("hello world")
 })
+
+app.use(cors({
+  origin: APP_HOME,
+  credentials: true,
+  methods: "GET,POST,PUT,DELETE",
+  credentials: true,
+}));
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', `${APP_HOME} `);
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Headers', 'Authorization');
+  next();
+});
 
 app.use(function (err, req, res, next) {
   console.error(err.stack);
