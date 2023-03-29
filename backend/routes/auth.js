@@ -11,7 +11,7 @@ router.get("/login/success", (req, res) => {
       message: "successful",
       user: req.user,
       sessionStorage: req.user,
-      // cookies: req.cookies
+      cookies: req.cookies
     });
   }
 });
@@ -38,7 +38,8 @@ router.get(
   passport.authenticate("google", {
     successRedirect: APP_HOME,
     failureRedirect: "/login/failed",
-  })
+  }), (req, res, next) => {
+  }
 );
 
 

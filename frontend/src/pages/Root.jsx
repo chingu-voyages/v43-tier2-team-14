@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
 import { bookStore } from "../features/bookStore";
@@ -6,16 +6,20 @@ import Sidebar from "../components/Sidebar";
 import { userStore } from "../features/userStore";
 
 const Root = () => {
-  const [userData, setUserData] = useState({});
-
   // const getBooks = bookStore((state) => state.getBooks);
   // const bookList = bookStore((state) => state.bookList);
   const user = userStore((state) => state.user);
-  console.log(user);
+  const isLoggedIn = userStore((state) => state.isLoggedIn);
+  const fetchUserData = userStore((state) => state.fetchUserData);
 
   useEffect(() => {
     // getBooks();
     // console.log(bookList);
+    console.log(user);
+    console.log(isLoggedIn);
+    fetchUserData();
+    if (isLoggedIn) {
+    }
   }, []);
 
   return (

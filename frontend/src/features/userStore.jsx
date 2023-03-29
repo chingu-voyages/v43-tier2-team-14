@@ -3,7 +3,13 @@ import { devtools } from "zustand/middleware";
 import axios from "axios";
 
 export const userStore = create((set) => ({
-  user: {},
+  user: null,
+  isLoggedIn: false,
+  setIsLoggedIn: (logged) => set({ isLoggedIn: logged }),
+  logout: async () => {
+    set({ user: null });
+    set({ isLoggedIn: false });
+  },
   fetchUserData: async () => {
     try {
       const userInfo = await axios.get(
@@ -19,7 +25,4 @@ export const userStore = create((set) => ({
       console.log(error);
     }
   },
-  setUser: (newUser) => set({ user: newUser }),
-  logout: async () => set({ user: {} }),
 }));
-
