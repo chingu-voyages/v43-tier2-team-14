@@ -10,6 +10,7 @@ export const userStore = create((set) => ({
         `${import.meta.env.VITE_BACKEND_URL}/api/user`,
         {
           withCredentials: true,
+          credentials: "include",
         }
       );
       console.log(userData);
