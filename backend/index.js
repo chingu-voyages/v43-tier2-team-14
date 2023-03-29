@@ -60,7 +60,7 @@ app.use('/auth', authRoutes)
 
 app.get('/api/user', (req, res, next) => {
   // res.json(req.user);
-  res.send(req.user);
+  res.json(req.user);
   console.log(req.user)
   console.log(req.session.passport)
 });
