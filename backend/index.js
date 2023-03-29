@@ -61,8 +61,8 @@ app.use('/auth', authRoutes)
 
 app.get('/api/user', (req, res, next) => {
   // res.json(req.user);
-  res.send(req.session.passport.user);
-  console.log(req.session.passport.user)
+  const user = req.user
+  res.status(200).json({ user });
   console.log(req.user)
 });
 
