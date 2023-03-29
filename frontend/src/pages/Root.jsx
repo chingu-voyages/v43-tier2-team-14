@@ -17,8 +17,8 @@ const Root = () => {
     // console.log(bookList);
     console.log(user);
     console.log(isLoggedIn);
-    fetchUserData();
     if (isLoggedIn) {
+      fetchUserData();
     }
   }, []);
 
