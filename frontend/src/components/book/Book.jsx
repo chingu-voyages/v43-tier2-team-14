@@ -2,10 +2,12 @@ import BookBody from "./BookBody";
 import BookImage from "./BookImage";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
+const Book = () => {
+  const single_book_url = `${import.meta.env.VITE_BACKEND_URL}/api/books/`;
 import NoContent from "../NoContent";
 const Book = () => {
-  const single_book_url =
-    "https://v43-tier2-team14-backend.onrender.com/api/books/";
+
 
   const { id } = useParams();
   const [singleBook, setSingleBook] = useState([]);

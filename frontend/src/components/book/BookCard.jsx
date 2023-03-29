@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom"
-import { BsBookmark } from "react-icons/bs"
-import { bookStore } from "../../features/bookStore"
+import { Link } from "react-router-dom";
+import { BsBookmark } from "react-icons/bs";
+import { bookStore } from "../../features/bookStore";
+import toast, { Toaster } from "react-hot-toast";
 
 const BookCard = ({
   id,
@@ -13,7 +14,7 @@ const BookCard = ({
     imageLinks,
   },
 }) => {
-  const addToWishlist = bookStore((state) => state.addToWishlist)
+  const addToWishlist = bookStore((state) => state.addToWishlist);
 
   const item = {
     id,
@@ -23,12 +24,16 @@ const BookCard = ({
     imageLinks,
     description,
     authors,
-  }
-  console.log(item)
+  };
+  console.log(item);
+
+  const notify = () =>
+    toast(`${title} Added to your wish list`, { position: "top-right" });
 
   const addItemToWishlist = (item) => {
-    addToWishlist(item)
-  }
+    addToWishlist(item);
+    notify();
+  };
 
   return (
     <article className="border border-zinc-400 rounded-sm px-2 py-6 flex flex-col items-center justify-between">
@@ -48,7 +53,8 @@ const BookCard = ({
           <BsBookmark />
         </div>
       </div>
+      <Toaster />
     </article>
-  )
-}
-export default BookCard
+  );
+};
+export default BookCard;

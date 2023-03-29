@@ -10,7 +10,7 @@ passport.use(
       clientID: GOOGLE_ID,
       clientSecret: GOOGLE_SECRET,
       callbackURL: "/auth/google/callback",
-      },
+    },
     async (accessToken, refreshToken, profile, done) => {
       const googleId = profile.id;
       const email = profile.emails[0].value
@@ -40,6 +40,9 @@ passport.serializeUser(function (user, done) {
   done(null, user);
 });
 
-passport.deserializeUser(function (obj, done) {
-  done(null, obj);
+passport.deserializeUser(function (user, cb) {
+  process.nextTick(function () {
+    return cb(null, user);
+    console.log("from deserialize")
+  });
 });

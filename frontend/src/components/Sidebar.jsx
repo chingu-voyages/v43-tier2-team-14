@@ -8,7 +8,7 @@ import SidebarItem from "./SidebarItem";
 
 const Sidebar = () => {
   return (
-    <aside className="col-start-1 col-end-2 row-span-full py-36 border border-r-2 border-r-zinc-400">
+    <aside className="col-start-1 col-end-2 row-start-1 row-span-full py-36 border border-r-2 border-r-zinc-400">
       <SidebarItem icon={<AiOutlineHome />} path="/" />
       <SidebarItem icon={<BsBookmark />} path="/wishlist" />
       <SidebarItem icon={<GiBookshelf />} path="/books" />
