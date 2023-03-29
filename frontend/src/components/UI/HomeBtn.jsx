@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const HomeBtn = () => {
   return (
-    <button className="my-8 px-4 py-2 bg-bg-btn text-text-btn rounded-md capitalize duration-300 hover:text-white">
+    <button className="my-8 px-4 w-fit mx-auto py-2 bg-bg-btn text-text-btn rounded-md capitalize duration-300 hover:text-white">
       <Link to="/">return homepage</Link>
     </button>
-  )
-}
-export default HomeBtn
+  );
+};
+export default HomeBtn;

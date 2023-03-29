@@ -20,10 +20,11 @@ const Root = () => {
     if (isLoggedIn) {
       fetchUserData();
     }
+ 
   }, []);
 
   return (
-    <main className="h-screen bg-gray-200 grid grid-cols-12 grid-row-12">
+    <main className="bg-gray-200 grid grid-cols-12">
       <Sidebar />
       <Outlet />
       <Footer />
