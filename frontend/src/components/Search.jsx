@@ -30,23 +30,21 @@ const Search = () => {
 
         <div className="px-5">
           {!user ? (
-            <button
-              className="flex items-center bg-bg-btn text-text-btn rounded-full px-6 py-2 hover:text-white"
-              onClick={handleSignIn}
-            >
-              <a href={`${import.meta.env.VITE_BACKEND_URL}/auth/google`}>
-                Login
-              </a>
-            </button>
+            <a href={`${import.meta.env.VITE_BACKEND_URL}/auth/google`}>
+              Login
+            </a>
           ) : (
-            <button
-              className="flex items-center bg-bg-btn text-text-btn rounded-full px-6 py-2 hover:text-white"
-              onClick={handleLogout}
-            >
-              <a href={`${import.meta.env.VITE_BACKEND_URL}/auth/logout`}>
-                Logout
-              </a>
-            </button>
+            // <button
+            //   className="flex items-center bg-bg-btn text-text-btn rounded-full px-6 py-2 hover:text-white"
+            //   onClick={handleSignIn}
+            // ></button>
+            <a href={`${import.meta.env.VITE_BACKEND_URL}/auth/logout`}>
+              Logout
+            </a>
+            // <button
+            //   className="flex items-center bg-bg-btn text-text-btn rounded-full px-6 py-2 hover:text-white"
+            //   onClick={handleLogout}
+            // ></button>
           )}
         </div>
       </div>

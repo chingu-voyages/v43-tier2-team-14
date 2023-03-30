@@ -5,10 +5,6 @@ import { bookStore } from "../features/bookStore";
 import Sidebar from "../components/Sidebar";
 import { userStore } from "../features/userStore";
 
-import useSWR from "swr";
-
-const fetcher = (url) => fetch(url).then((res) => res.json());
-
 const Root = () => {
   // const getBooks = bookStore((state) => state.getBooks);
   // const bookList = bookStore((state) => state.bookList);
@@ -21,14 +17,8 @@ const Root = () => {
     console.log(user);
     const isAuthenticated = localStorage.getItem("isAuthenticated");
     console.log(isAuthenticated);
+    fetchUserData();
     if (isAuthenticated) {
-      const fetchUserData = () => {
-        const { data, error } = useSWR(
-          `${import.meta.env.VITE_BACKEND_URL}/api/user`,
-          fetcher
-        );
-      };
-      fetchUserData();
     }
   }, []);
 
