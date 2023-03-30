@@ -4,11 +4,8 @@ import axios from "axios";
 
 export const userStore = create((set) => ({
   user: null,
-  isLoggedIn: false,
-  setIsLoggedIn: (logged) => set({ isLoggedIn: logged }),
   logout: async () => {
     set({ user: null });
-    set({ isLoggedIn: false });
   },
   fetchUserData: async () => {
     try {

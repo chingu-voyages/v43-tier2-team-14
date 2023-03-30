@@ -9,18 +9,17 @@ const Root = () => {
   // const getBooks = bookStore((state) => state.getBooks);
   // const bookList = bookStore((state) => state.bookList);
   const user = userStore((state) => state.user);
-  const isLoggedIn = userStore((state) => state.isLoggedIn);
   const fetchUserData = userStore((state) => state.fetchUserData);
 
   useEffect(() => {
     // getBooks();
     // console.log(bookList);
     console.log(user);
-    console.log(isLoggedIn);
-    if (isLoggedIn) {
+    const isAuthenticated = localStorage.getItem("isAuthenticated");
+    console.log(isAuthenticated);
+    if (isAuthenticated) {
       fetchUserData();
     }
- 
   }, []);
 
   return (
