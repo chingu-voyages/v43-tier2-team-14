@@ -6,12 +6,12 @@ const Search = () => {
   const setIsLoggedIn = userStore((state) => state.setIsLoggedIn);
 
   const handleSignIn = async () => {
-    setIsLoggedIn(true);
+    localStorage.setItem("isAuthenticated", true);
   };
 
   const handleLogout = () => {
+    localStorage.removeItem("isAuthenticated");
     userStore((state) => state.logout());
-    setIsLoggedIn(false);
   };
 
   const user = userStore((state) => state.user);
@@ -52,6 +52,5 @@ const Search = () => {
       </div>
     </div>
   );
-
 };
 export default Search;

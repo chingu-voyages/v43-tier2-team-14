@@ -27,7 +27,7 @@ router.get('/logout', function (req, res, next) {
   req.logout(function (err) {
     if (err) { return next(err); }
     res.redirect(APP_HOME);
-    console.log("from logout")
+    console.log('from logout',APP_HOME)
   });
 });
 
@@ -37,8 +37,11 @@ router.get(
   "/google/callback",
   passport.authenticate("google", {
     successRedirect: APP_HOME,
+
     failureRedirect: "/login/failed",
   }), (req, res, next) => {
+    console.log('from logout',APP_HOME)
+
   }
 );
 

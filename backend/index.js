@@ -76,8 +76,8 @@ app.use(function (err, req, res, next) {
   res.status(500).send('Something broke!');
 });
 
-
 app.listen(port, () => {
   dbConnection()
   console.log(`SERVER HTTP server started on port ${port}`)
 })
+
