@@ -17,8 +17,8 @@ const Root = () => {
     console.log(user);
     const isAuthenticated = localStorage.getItem("isAuthenticated");
     console.log(isAuthenticated);
+    fetchUserData();
     if (isAuthenticated) {
-      fetchUserData();
     }
   }, []);
 
