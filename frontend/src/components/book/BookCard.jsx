@@ -28,7 +28,9 @@ const BookCard = ({
   console.log(item);
 
   const notify = () =>
-    toast(`${title} Added to your wish list`, { position: "top-right" });
+    toast.success(`${title} Added to your wish list`, {
+      position: "top-right",
+    });
 
   const addItemToWishlist = (item) => {
     addToWishlist(item);
