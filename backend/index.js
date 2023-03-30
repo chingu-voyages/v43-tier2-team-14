@@ -1,4 +1,6 @@
 import express from "express"
+import https from 'https'
+import fs from "fs"
 import cors from "cors"
 import session from "express-session"
 import passport from "passport";
@@ -76,8 +78,19 @@ app.use(function (err, req, res, next) {
   res.status(500).send('Something broke!');
 });
 
+const httpsOptions = {
+  key: fs.readFileSync('./ssl/key.pem'),
+  cert: fs.readFileSync('./ssl/cert.pem')
+}
 
-app.listen(port, () => {
+// app.listen(port, () => {
+//   dbConnection()
+//   console.log(`SERVER HTTP server started on port ${port}`)
+// })
+
+const server = https.createServer(httpsOptions, app).listen(port, () => {
   dbConnection()
-  console.log(`SERVER HTTP server started on port ${port}`)
+
+  console.log('server running at ' + port)
+
 })
