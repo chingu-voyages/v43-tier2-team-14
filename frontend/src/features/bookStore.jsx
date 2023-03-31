@@ -26,14 +26,20 @@ const store = (set) => ({
     }
   },
   addToWishlist: (item) =>
-    set((state) => ({
-      wishList: [...state.wishList, item],
-    })),
+    set((state) => {
+      const wishItemExist = state.wishList.some(
+        (wishItem) => wishItem.id === item.id
+      );
+      if (!wishItemExist) {
+        return {
+          wishList: [...state.wishList, item],
+        };
+      }
+      return state;
+    }),
   removeFromWishlist: (id) =>
     set((state) => ({
-      wishList: state.wishList.filter((item) => {
-        return item.id !== id;
-      }),
+      wishList: state.wishList.filter((item) => item.id !== id),
     })),
 });
 
