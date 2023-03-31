@@ -1,5 +1,5 @@
-import { bookStore } from "../../features/bookStore"
-import BookCard from "./BookCard"
+import { bookStore } from "../../features/bookStore";
+import BookCard from "./BookCard";
 import { Link } from "react-router-dom";
 import NoContent from "../NoContent";
 
@@ -13,7 +13,7 @@ const BooksContainer = () => {
         </h2>
 
         {bookList.length > 0 ? (
-          <div className="wrapper grid grid-cols-3 gap-12 ">
+          <div className="p-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 ">
             {bookList.map((bookCard) => {
               return <BookCard key={bookCard.id} {...bookCard} />;
             })}
