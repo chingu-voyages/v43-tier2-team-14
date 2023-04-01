@@ -34,11 +34,22 @@ npm run dev
 
 ## Technologies used
 
+### Frontend
+
 - Vite
 - TailwindCSS
-- Redux-toolkit
+- Zustand
 - React Router
 - React Hooks
+- React icons
+
+### Backend
+
+- Express
+- MongoDB
+- Passport
+- Mongoose
+- Express Session
 
 ## Contributing
 
