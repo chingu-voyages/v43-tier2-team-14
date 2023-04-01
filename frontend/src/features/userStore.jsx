@@ -2,11 +2,14 @@ import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import axios from "axios";
 
-export const userStore = create((set) => ({
+const store = (set) => ({
   user: null,
-  fetchUserData: () => {
-    const response = axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/user`);
-    console.log(response);
+  fetchUserData: async () => {
+    const response = await axios.get(
+      `${import.meta.env.VITE_BACKEND_URL}/api/user`,
+      { withCredentials: true }
+    );
+    console.log(response.data);
   },
   logout: async () => {
     set({ user: null });
@@ -15,4 +18,6 @@ export const userStore = create((set) => ({
     set((state) => ({
       user: user,
     })),
-}));
+});
+
+export const userStore = create(devtools(store));

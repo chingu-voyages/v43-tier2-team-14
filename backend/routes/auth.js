@@ -27,7 +27,7 @@ router.get('/logout', function (req, res, next) {
   req.logout(function (err) {
     if (err) { return next(err); }
     res.redirect(APP_HOME);
-    console.log('from logout',APP_HOME)
+    console.log('from logout', APP_HOME)
   });
 });
 
@@ -40,7 +40,7 @@ router.get(
 
     failureRedirect: "/login/failed",
   }), (req, res, next) => {
-    console.log('from logout',APP_HOME)
+    console.log('from logout', APP_HOME)
 
   }
 );
