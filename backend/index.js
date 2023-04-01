@@ -38,7 +38,7 @@ app.use(session({
 
 var whitelist = [APP_HOME, 'https://https://v43-frontend.ahmedlotfy.me/', 'https://v43-tier2-team14-frontend.onrender.com']
 
-var allowedDomains = [`${APP_HOME}`, 'https://https://v43-frontend.ahmedlotfy.me/', 'https://v43-tier2-team14-frontend.onrender.com'];
+var allowedDomains = [APP_HOME, 'https://https://v43-frontend.ahmedlotfy.me/', 'https://v43-tier2-team14-frontend.onrender.com'];
 app.use(cors({
   origin: function (origin, callback) {
     // bypass the requests with no origin (like curl requests, mobile apps, etc )
@@ -53,7 +53,7 @@ app.use(cors({
 }));
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', `${APP_HOME}`);
+  res.setHeader('Access-Control-Allow-Origin', APP_HOME);
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.setHeader('Access-Control-Allow-Headers', 'Authorization');
