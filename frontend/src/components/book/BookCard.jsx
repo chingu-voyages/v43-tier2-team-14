@@ -16,6 +16,8 @@ const BookCard = ({
   },
 }) => {
   const addToWishlist = bookStore((state) => state.addToWishlist);
+  const wishList = bookStore((state) => state.wishList);
+  const removeFromWishlist = bookStore((state) => state.removeFromWishlist);
 
   const item = {
     id,
@@ -26,19 +28,31 @@ const BookCard = ({
     description,
     authors,
   };
+  const isOnWishlist = (id) => wishList.find((item) => item.id === id);
+  const [isAdded, setIsAdded] = useState(isOnWishlist(id));
 
-  const notify = () =>
-    toast.success(`${title} Added to your wish list`, {
+  const alertAdd = () =>
+    toast.success(`${title} Added to your wishlist`, {
+      position: "top-right",
+    });
+
+  const alertRemove = () =>
+    toast.error(`${title} is removed from wishlist`, {
       position: "top-right",
     });
 
   const addItemToWishlist = (item) => {
-    addToWishlist(item);
-    notify();
-    setIsAdded(!isAdded);
+    if (!isOnWishlist(id)) {
+      addToWishlist(item);
+      alertAdd();
+      setIsAdded(!isAdded);
+    } else {
+      removeFromWishlist(id);
+      alertRemove();
+      setIsAdded(!isAdded);
+    }
   };
 
-  const [isAdded, setIsAdded] = useState(false);
   return (
     <article className="max-w-xs border bg-zinc-100 border-slate-300 shadow-md rounded-sm px-2 py-6 flex flex-col items-center justify-between">
       <figure className="flex cursor-pointer mb-2">
