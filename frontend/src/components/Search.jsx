@@ -3,18 +3,19 @@ import { IoSearchOutline } from "react-icons/io5";
 import { userStore } from "../features/userStore";
 
 const Search = () => {
-  const setIsLoggedIn = userStore((state) => state.setIsLoggedIn);
+  const user = userStore((state) => state.user);
+  const logout = userStore((state) => state.logout);
 
   const handleSignIn = async () => {
     localStorage.setItem("isAuthenticated", true);
   };
 
   const handleLogout = () => {
+    console.log(user);
+    logout;
     localStorage.removeItem("isAuthenticated");
-    userStore((state) => state.logout());
   };
 
-  const user = userStore((state) => state.user);
   console.log(user);
   return (
     <div className="col-start-3 col-span-full row-start-1 w-full py-5">
@@ -30,21 +31,27 @@ const Search = () => {
 
         <div className="px-5">
           {!user ? (
-            <a href={`${import.meta.env.VITE_BACKEND_URL}/auth/google`}>
+            <a
+              className="flex items-center bg-bg-btn text-text-btn rounded-full px-6 py-2 hover:text-white"
+              href={`${import.meta.env.VITE_BACKEND_URL}/auth/google`}
+              onClick={handleSignIn}
+            >
               Login
             </a>
           ) : (
-            // <button
-            //   className="flex items-center bg-bg-btn text-text-btn rounded-full px-6 py-2 hover:text-white"
-            //   onClick={handleSignIn}
-            // ></button>
-            <a href={`${import.meta.env.VITE_BACKEND_URL}/auth/logout`}>
-              Logout
-            </a>
-            // <button
-            //   className="flex items-center bg-bg-btn text-text-btn rounded-full px-6 py-2 hover:text-white"
-            //   onClick={handleLogout}
-            // ></button>
+            <div className="flex gap-6">
+              <div className="flex justify-center items-center gap-6">
+                <img className="rounded-full" src={user?.picture} alt="" />
+                <h2>{user?.name}</h2>
+              </div>
+              <a
+                className="flex items-center bg-bg-btn text-text-btn rounded-full px-6 py-2 hover:text-white"
+                href={`${import.meta.env.VITE_BACKEND_URL}/auth/logout`}
+                onClick={handleLogout}
+              >
+                Logout
+              </a>
+            </div>
           )}
         </div>
       </div>

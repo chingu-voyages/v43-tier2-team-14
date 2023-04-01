@@ -23,7 +23,6 @@ app.use(express.json())
 app.use(express.static('public', { dotfiles: 'allow' }))
 app.use(express.urlencoded({ extended: true }));
 
-
 // setting up session cookie with logged in user's database id
 app.use(session({
   resave: false,
@@ -37,15 +36,24 @@ app.use(session({
   })
 }));
 
+var whitelist = [APP_HOME, 'https://https://v43-frontend.ahmedlotfy.me/', 'https://v43-tier2-team14-frontend.onrender.com']
+
+var allowedDomains = [APP_HOME, 'https://https://v43-frontend.ahmedlotfy.me/', 'https://v43-tier2-team14-frontend.onrender.com'];
 app.use(cors({
-  origin: "http://localhost:5173",
-  credentials: true,
-  methods: "GET,POST,PUT,DELETE",
-  credentials: true,
+  origin: function (origin, callback) {
+    // bypass the requests with no origin (like curl requests, mobile apps, etc )
+    if (!origin) return callback(null, true);
+
+    if (allowedDomains.indexOf(origin) === -1) {
+      var msg = `This site ${origin} does not have an access. Only specific domains are allowed to access it.`;
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
 }));
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', `http://localhost:5173`);
+  res.setHeader('Access-Control-Allow-Origin', APP_HOME);
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.setHeader('Access-Control-Allow-Headers', 'Authorization');
