@@ -23,7 +23,6 @@ app.use(express.json())
 app.use(express.static('public', { dotfiles: 'allow' }))
 app.use(express.urlencoded({ extended: true }));
 
-
 // setting up session cookie with logged in user's database id
 app.use(session({
   resave: false,
@@ -37,15 +36,24 @@ app.use(session({
   })
 }));
 
-app.use(cors({
-  origin: "http://localhost:5173",
+var whitelist = ['http://localhost:5173', 'http://https://v43-frontend.ahmedlotfy.me/', 'https://v43-tier2-team14-frontend.onrender.com']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
   credentials: true,
   methods: "GET,POST,PUT,DELETE",
   credentials: true,
-}));
+}
+
+app.use(cors(corsOptions))
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', `http://localhost:5173`);
+  res.setHeader('Access-Control-Allow-Origin', whitelist);
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.setHeader('Access-Control-Allow-Headers', 'Authorization');
