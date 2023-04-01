@@ -36,7 +36,7 @@ app.use(session({
   })
 }));
 
-var whitelist = ['http://localhost:5173', 'https://https://v43-frontend.ahmedlotfy.me/', 'https://v43-tier2-team14-frontend.onrender.com']
+var whitelist = [APP_HOME, 'https://https://v43-frontend.ahmedlotfy.me/', 'https://v43-tier2-team14-frontend.onrender.com']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -53,7 +53,7 @@ var corsOptions = {
 app.use(cors(corsOptions))
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', whitelist);
+  res.setHeader('Access-Control-Allow-Origin', APP_HOME);
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.setHeader('Access-Control-Allow-Headers', 'Authorization');
