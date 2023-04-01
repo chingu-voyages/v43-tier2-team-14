@@ -9,7 +9,7 @@ const store = (set) => ({
       `${import.meta.env.VITE_BACKEND_URL}/api/user`,
       { withCredentials: true }
     );
-    set({ user: response.data });
+    set({ user: response.data.user });
   },
   logout: async () => {
     set({ user: null });
