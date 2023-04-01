@@ -36,7 +36,7 @@ app.use(session({
   })
 }));
 
-var whitelist = ['http://localhost:5173', 'http://https://v43-frontend.ahmedlotfy.me/', 'https://v43-tier2-team14-frontend.onrender.com']
+var whitelist = ['http://localhost:5173', 'https://https://v43-frontend.ahmedlotfy.me/', 'https://v43-tier2-team14-frontend.onrender.com']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
