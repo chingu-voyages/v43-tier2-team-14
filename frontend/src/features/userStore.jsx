@@ -9,15 +9,11 @@ const store = (set) => ({
       `${import.meta.env.VITE_BACKEND_URL}/api/user`,
       { withCredentials: true }
     );
-    console.log(response.data);
+    set({ user: response.data });
   },
   logout: async () => {
     set({ user: null });
   },
-  setUserData: (user) =>
-    set((state) => ({
-      user: user,
-    })),
 });
 
 export const userStore = create(devtools(store));
