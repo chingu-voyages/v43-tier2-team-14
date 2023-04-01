@@ -31,21 +31,23 @@ const Search = () => {
 
         <div className="px-5">
           {!user ? (
-            <a
-              className="flex items-center bg-bg-btn text-text-btn rounded-full px-6 py-2 hover:text-white"
-              href={`${import.meta.env.VITE_BACKEND_URL}/auth/google`}
-              onClick={handleSignIn}
-            >
-              Login
-            </a>
-          ) : (
-            <div className="flex gap-6">
-              <div className="flex justify-center items-center gap-6">
-                <img className="rounded-full" src={user?.picture} alt="" />
-                <h2>{user?.name}</h2>
-              </div>
+            <div className="flex items-center h-4 gap-6">
               <a
                 className="flex items-center bg-bg-btn text-text-btn rounded-full px-6 py-2 hover:text-white"
+                href={`${import.meta.env.VITE_BACKEND_URL}/auth/google`}
+                onClick={handleSignIn}
+              >
+                Login
+              </a>
+            </div>
+          ) : (
+            <div className="flex items-center h-4 gap-6">
+              <div className="flex justify-center items-center gap-3">
+                <img className="rounded-full h-16" src={user?.picture} alt="" />
+                <h2 className="font-semibold">{user?.name}</h2>
+              </div>
+              <a
+                className="flex items-center bg-bg-btn text-text-btn rounded-full px-6 py-2  hover:text-white"
                 href={`${import.meta.env.VITE_BACKEND_URL}/auth/logout`}
                 onClick={handleLogout}
               >
