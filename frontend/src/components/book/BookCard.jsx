@@ -4,7 +4,7 @@ import { bookStore } from "../../features/bookStore";
 import toast, { Toaster } from "react-hot-toast";
 import { useState } from "react";
 
-const BookCard = ({
+const BookCard = ({ 
   id,
   volumeInfo: {
     title,
