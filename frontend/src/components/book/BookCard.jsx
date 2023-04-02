@@ -46,6 +46,7 @@ const BookCard = ({
       addToWishlist(item);
       alertAdd();
       setIsAdded(!isAdded);
+      console.log("salamu alykooo");
     } else {
       removeFromWishlist(id);
       alertRemove();
