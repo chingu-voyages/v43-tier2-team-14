@@ -8,7 +8,7 @@ const WishListWrapper = () => {
 
   return (
     <>
-      <h2 className="text-4xl capitalize font-bold my-8">wishlist</h2>
+      <h2 className="text-4xl capitalize font-bold mb-8">wishlist</h2>
       <p>You have {wishList.length} items in your list!</p>
       {wishList.length > 0 ? (
         wishList.map((wishItem) => (

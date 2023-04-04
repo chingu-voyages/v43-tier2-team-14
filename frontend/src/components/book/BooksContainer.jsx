@@ -7,9 +7,16 @@ const BooksContainer = () => {
   return (
     <>
       <section className="flex flex-col justify-center">
-        <h2 className="capitalize text-4xl text-center my-4">
-          the main book list container lives here
-        </h2>
+        <article className="flex flex-col space-y-4">
+          <h1 className="text-4xl font-bold capitalize">
+            happy reading Muhammad!
+          </h1>
+          <p className="w-full md:w-1/2">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
+            dolor ex dicta illo pariatur amet repellendus modi cum nam aliquam
+            quam
+          </p>
+        </article>
 
         {bookList.length > 0 ? (
           <div className="p-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 ">

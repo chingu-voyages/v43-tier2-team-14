@@ -28,16 +28,14 @@ const Book = () => {
 
   return (
     <section className="mx-auto px-12 lg:px-24">
-      <div className="section-wrapper grid gird-col-1 lg:grid-cols-2 justify-center">
-        {!singleBook ? (
-          <NoContent />
-        ) : (
-          <>
-            <BookImage singleBook={singleBook} />
-            <BookBody singleBook={singleBook} />
-          </>
-        )}
-      </div>
+      {singleBook.length > 0 ? (
+        <div className="section-wrapper grid grid-col-1 lg:grid-cols-2 justify-center">
+          <BookImage singleBook={singleBook} />
+          <BookBody singleBook={singleBook} />
+        </div>
+      ) : (
+        <NoContent message="there is no data available at the moment!" />
+      )}
     </section>
   );
 };
