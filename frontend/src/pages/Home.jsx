@@ -9,7 +9,7 @@ const Home = () => {
   const user = userStore((state) => state.user);
   console.log(user);
   return (
-    <section className=" flex flex-col items-start justify-start col-start-3 col-span-full row-start-5 row-span-full">
+    <section className=" flex flex-col items-start justify-start col-start-3 col-span-full">
       <Search />
       <Categories />
       <h1 className="text-3xl  bg-blue-300 font-bold underline mb-4">

@@ -1,6 +1,5 @@
 import { bookStore } from "../../features/bookStore";
 import BookCard from "./BookCard";
-import { Link } from "react-router-dom";
 import NoContent from "../NoContent";
 
 const BooksContainer = () => {

@@ -4,7 +4,7 @@ import { bookStore } from "../../features/bookStore";
 import toast, { Toaster } from "react-hot-toast";
 import { useState } from "react";
 
-const BookCard = ({ 
+const BookCard = ({
   id,
   volumeInfo: {
     title,
@@ -55,12 +55,13 @@ const BookCard = ({
   };
 
   return (
-    <article className="max-w-xs border bg-zinc-100 border-slate-300 shadow-md rounded-sm px-2 py-6 flex flex-col items-center justify-between">
+    <article className="relative card z-10 max-w-xs border bg-zinc-100 border-slate-300 shadow-md rounded-md px-2 py-6 flex flex-col items-center justify-between">
       <figure className="flex cursor-pointer mb-2">
         <Link to={`${id}`}>
-          <img src={imageLinks.thumbnail} alt="" />
+          <img src={imageLinks.thumbnail} className="flex max-w-full" alt="" />
         </Link>
       </figure>
+
       <div className="px-4 text-center flex flex-col items-center space-y-2">
         <h2 className="font-semibold">{title.substr(0, 25)}</h2>
         <p className="px-2 py-0.5 text-xs bg-red-500 text-white rounded-md w-fit">
