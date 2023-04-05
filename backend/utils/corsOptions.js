@@ -11,11 +11,11 @@ export const corsOptions = {
 };
 
 export const headers = (req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
-  res.setHeader('Access-Control-Allow-Origin', 'https://https://v43-frontend.ahmedlotfy.me/');
-  res.setHeader('Access-Control-Allow-Origin', 'https://v43-tier2-team14-frontend.onrender.com');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.setHeader('Access-Control-Allow-Headers', 'Authorization');
+  res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
+  res.header('Access-Control-Allow-Origin', 'https://https://v43-frontend.ahmedlotfy.me/');
+  res.header('Access-Control-Allow-Origin', 'https://v43-tier2-team14-frontend.onrender.com');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Headers', 'Authorization');
   next();
 }
