@@ -38,7 +38,7 @@
 
   app.use(cors(corsOptions));
 
-  // app.use(headers);
+  app.use(headers);
 
   // initializing passportjs instance with its session  
   app.use(passport.initialize());
