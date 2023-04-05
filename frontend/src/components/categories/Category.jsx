@@ -1,7 +1,12 @@
 import React from "react";
-
-const Category = () => {
-  return <div>Category</div>;
+import { NavLink } from "react-router-dom";
+const Category = ({ category }) => {
+  return (
+    <div className="">
+      <h2>{category}</h2>
+      <NavLink to={`categories/${category}`}></NavLink>
+    </div>
+  );
 };
 
 export default Category;

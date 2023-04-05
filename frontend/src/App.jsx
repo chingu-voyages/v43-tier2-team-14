@@ -1,15 +1,17 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import "./App.css"
-import Root from "./pages/Root"
-import Home from "./pages/Home"
-import Cart from "./pages/Cart"
-import Register from "./pages/Register"
-import LogIn from "./pages/LogIn"
-import Error from "./pages/Error"
-import BookDetails from "./pages/BookDetails"
-import Wishlist from "./pages/WishList"
-import Library from "./pages/Library"
-import "./App.css"
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./App.css";
+import Root from "./pages/Root";
+import Home from "./pages/Home";
+import Cart from "./pages/Cart";
+import Register from "./pages/Register";
+import LogIn from "./pages/LogIn";
+import Error from "./pages/Error";
+import BookDetails from "./pages/BookDetails";
+import Wishlist from "./pages/WishList";
+import Library from "./pages/Library";
+import "./App.css";
+import Categories from "./components/categories/Categories";
+import Category from "./components/categories/Category";
 
 function App() {
   const router = createBrowserRouter([
@@ -31,6 +33,15 @@ function App() {
           element: <BookDetails />,
         },
         {
+          path: "categories",
+          element: <Categories />,
+        },
+        {
+          path: "categories/:category",
+          element: <Category />,
+        },
+
+        {
           path: "login",
           element: <LogIn />,
         },
@@ -48,9 +59,9 @@ function App() {
         },
       ],
     },
-  ])
+  ]);
 
-  return <RouterProvider router={router} />
+  return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;

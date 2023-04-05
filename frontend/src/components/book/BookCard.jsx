@@ -3,8 +3,9 @@ import { BsBookmarkPlus, BsBookmarkDashFill } from "react-icons/bs";
 import { bookStore } from "../../features/bookStore";
 import toast, { Toaster } from "react-hot-toast";
 import { useState } from "react";
+import { userStore } from "../../features/userStore";
 
-const BookCard = ({ 
+const BookCard = ({
   id,
   volumeInfo: {
     title,
@@ -18,6 +19,9 @@ const BookCard = ({
   const addToWishlist = bookStore((state) => state.addToWishlist);
   const wishList = bookStore((state) => state.wishList);
   const removeFromWishlist = bookStore((state) => state.removeFromWishlist);
+  const user = userStore((state) => state.user);
+  const addBookDb = bookStore((state) => state.addBookDb);
+  const removeBookDb = bookStore((state) => state.removeBookDb);
 
   const item = {
     id,
@@ -43,12 +47,15 @@ const BookCard = ({
 
   const addItemToWishlist = (item) => {
     if (!isOnWishlist(id)) {
+      addBookDb(user._id, item);
       addToWishlist(item);
       alertAdd();
       setIsAdded(!isAdded);
       console.log("salamu alykooo");
     } else {
       removeFromWishlist(id);
+      removeBookDb(user._id, id);
+      console.log(user._id, id);
       alertRemove();
       setIsAdded(!isAdded);
     }

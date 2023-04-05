@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { persist } from "zustand/middleware";
+import axios from "axios";
 
 const store = (set) => ({
   bookList: [],
@@ -18,7 +19,10 @@ const store = (set) => ({
     // &orderBy=newest or relevance
 
     try {
-      const response = await fetch(url);
+      const response = await fetch(url, {
+        method: "GET",
+        credentials: "include",
+      });
       const data = await response.json();
       set({ bookList: data.categories.items });
     } catch (error) {
@@ -41,6 +45,26 @@ const store = (set) => ({
     set((state) => ({
       wishList: state.wishList.filter((item) => item.id !== id),
     })),
+  addBookDb: async (userId, item) => {
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/books/add-book`;
+    fetch(url, {
+      method: "post",
+      body: JSON.stringify({ userId: userId, ...item }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  },
+  removeBookDb: async (userId, id) => {
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/books/remove-book`;
+    fetch(url, {
+      method: "delete",
+      body: JSON.stringify({ userId, id }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  },
 });
 
 export const bookStore = create(
