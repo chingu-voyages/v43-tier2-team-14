@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import { BsBookmarkPlus, BsBookmarkDashFill } from "react-icons/bs";
-import { bookStore } from "../../features/bookStore";
-import toast, { Toaster } from "react-hot-toast";
-import { useState } from "react";
+import { Toaster } from "react-hot-toast";
+import useWishlist from "../../hooks/useWishlist";
 
 const BookCard = ({
   id,
@@ -15,9 +14,7 @@ const BookCard = ({
     imageLinks,
   },
 }) => {
-  const addToWishlist = bookStore((state) => state.addToWishlist);
-  const wishList = bookStore((state) => state.wishList);
-  const removeFromWishlist = bookStore((state) => state.removeFromWishlist);
+  const { isAdded, addItemToWishlist } = useWishlist(id, title);
 
   const item = {
     id,
@@ -28,37 +25,16 @@ const BookCard = ({
     description,
     authors,
   };
-  const isOnWishlist = (id) => wishList.find((item) => item.id === id);
-  const [isAdded, setIsAdded] = useState(isOnWishlist(id));
-
-  const alertAdd = () =>
-    toast.success(`${title} Added to your wishlist`, {
-      position: "top-right",
-    });
-
-  const alertRemove = () =>
-    toast.error(`${title} is removed from wishlist`, {
-      position: "top-right",
-    });
-
-  const addItemToWishlist = (item) => {
-    if (!isOnWishlist(id)) {
-      addToWishlist(item);
-      alertAdd();
-      setIsAdded(!isAdded);
-      console.log("salamu alykooo");
-    } else {
-      removeFromWishlist(id);
-      alertRemove();
-      setIsAdded(!isAdded);
-    }
-  };
 
   return (
     <article className="relative card z-10 max-w-xs border bg-zinc-100 border-slate-300 shadow-md rounded-md px-2 py-6 flex flex-col items-center justify-between">
       <figure className="flex cursor-pointer mb-2">
         <Link to={`${id}`}>
-          <img src={imageLinks.thumbnail} className="flex max-w-full" alt="" />
+          <img
+            src={imageLinks.thumbnail}
+            className="flex max-w-full"
+            alt={`${title}-image`}
+          />
         </Link>
       </figure>
 

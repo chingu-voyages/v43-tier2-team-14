@@ -12,9 +12,7 @@ const WishListWrapper = () => {
       <p>You have {wishList.length} items in your list!</p>
       {wishList.length > 0 ? (
         wishList.map((wishItem) => (
-          <div className="wrapper">
-            <WishListItem key={wishItem.id} {...wishItem} />
-          </div>
+          <WishListItem key={wishItem.id} {...wishItem} />
         ))
       ) : (
         <>

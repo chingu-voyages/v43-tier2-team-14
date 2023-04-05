@@ -1,27 +1,61 @@
-import { BsBookmark } from "react-icons/bs"
-import { BsShare } from "react-icons/bs"
-import { BsCartPlusFill } from "react-icons/bs"
-import { BsDownload } from "react-icons/bs"
-import BookBtns from "./BookBtns"
-import GenericBtns from "../UI/GenericBtns"
+import { BsCartPlusFill } from "react-icons/bs";
+import { Toaster } from "react-hot-toast";
+import GenericBtns from "../UI/GenericBtns";
+import useWishlist from "../../hooks/useWishlist";
+import { BsBookmarkPlus, BsBookmarkDashFill } from "react-icons/bs";
 
-const BookBody = ({ singleBook: { title, description, pageCount } }) => {
+const BookBody = ({
+  id,
+  singleBook: {
+    title,
+    categories,
+    pageCount,
+    imageLinks,
+    description,
+    authors,
+  },
+}) => {
+  const { addItemToWishlist, isAdded } = useWishlist(id, title);
+
+  const item = {
+    id,
+    title,
+    categories,
+    pageCount,
+    imageLinks,
+    description,
+    authors,
+  };
+
   return (
-    <article className="book-details flex flex-col mt-4 space-y-4">
-      <h2 className="text-6xl text-center lg:text-left">{title}</h2>
-      <div className="author">dan brown</div>
-      <p className="brief-desc mb-12">{description}</p>
-      <span>{pageCount}</span>
+    <article className="flex flex-col space-y-4">
+      <h2 className="text-4xl font-bold tracking-widest leading-tight	 text-center lg:text-left">
+        {title}
+      </h2>
+      <div className="capitalize text-red-500 font-semibold">{authors[0]}</div>
+      <p className="px-2 py-0.5 text-xs bg-green-500 text-white rounded-md w-fit">
+        {categories[0]}
+      </p>
+      <p className="leading-7">{description.substring(0, 250)}</p>
+      <span className="bg-orange-500 font-bold text-xs capitalize text-white w-fit py-1 px-3 rounded-md">
+        pages count: {pageCount}
+      </span>
 
       <div className="flex justify-between pt-16">
         <GenericBtns title="add to cart" icon={<BsCartPlusFill />} />
         <div className="flex space-x-4 items-center">
-          <BookBtns icon={<BsBookmark />} />
-          <BookBtns icon={<BsShare />} />
-          <BookBtns icon={<BsDownload />} />
+          {/*           experimental
+           */}{" "}
+          <div
+            className="p-3 text-xl flex justify-center w-12 mx-auto cursor-pointer duration-300 text-text-btn hover:text-text-main"
+            onClick={() => addItemToWishlist(item)}
+          >
+            {!isAdded ? <BsBookmarkPlus /> : <BsBookmarkDashFill />}
+          </div>
         </div>
       </div>
+      <Toaster />
     </article>
-  )
-}
-export default BookBody
+  );
+};
+export default BookBody;
