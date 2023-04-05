@@ -1,4 +1,4 @@
-var allowedDomains = ['http://localhost:5173', 'https://https://v43-frontend.ahmedlotfy.me/', 'https://v43-tier2-team14-frontend.onrender.com'];
+var allowedDomains = ['http://localhost:5173', 'https://v43-frontend.ahmedlotfy.me/', 'https://v43-tier2-team14-frontend.onrender.com'];
 
 export const corsOptions = {
   origin: function (origin, callback) {
@@ -15,6 +15,8 @@ export const corsOptions = {
 
 export const headers = (req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+  res.setHeader('Access-Control-Allow-Origin', 'https://https://v43-frontend.ahmedlotfy.me/');
+  res.setHeader('Access-Control-Allow-Origin', 'https://v43-tier2-team14-frontend.onrender.com');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.setHeader('Access-Control-Allow-Headers', 'Authorization');
