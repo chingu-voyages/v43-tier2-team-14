@@ -6,7 +6,7 @@ import MongoStore from 'connect-mongo'
 import helmet from "helmet";
 import dbConnection from "./utils/db.js"
 
-import { PORT, SESSION_SECRET, MONGO_URI } from "./utils/secrets.js"
+import { PORT, SESSION_SECRET, MONGO_URI, APP_HOME } from "./utils/secrets.js"
 import authRoutes from "./routes/auth.js"
 import booksRoutes from "./routes/books.js"
 
@@ -16,22 +16,10 @@ const port = PORT || 4000
 
 import "./config/passport.js";
 
-var allowedDomains = ['http://localhost:5173', 'https://v43-frontend.ahmedlotfy.me/', 'https://v43-tier2-team14-frontend.onrender.com'];
-
-export const corsOptions = {
-  origin: function (origin, callback) {
-    // bypass the requests with no origin (like curl requests, mobile apps, etc )
-    if (!origin) return callback(null, true);
-
-    if (allowedDomains.indexOf(origin) === -1) {
-      var msg = `This site ${origin} does not have an access. Only specific domains are allowed to access it.`;
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  }
-}
-
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: APP_HOME,
+  credentials: true
+}));
 
 // Middlewares
 app.use(helmet())
@@ -52,13 +40,13 @@ app.use(session({
   })
 }));
 
-// app.use((req, res, next) => {
-//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
-//   res.setHeader('Access-Control-Allow-Credentials', 'true');
-//   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-//   res.setHeader('Access-Control-Allow-Headers', 'Authorization');
-//   next();
-// });
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', APP_HOME);
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.setHeader('Access-Control-Allow-Headers', 'Authorization');
+  next();
+});
 
 // initializing passportjs instance with its session  
 app.use(passport.initialize());
