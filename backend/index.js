@@ -4,7 +4,7 @@ import session from "express-session"
 import passport from "passport";
 import MongoStore from 'connect-mongo'
 import helmet from "helmet";
-import { corsOptions, headers } from "./utils/corsOptions.js";
+import { corsOptions } from "./utils/corsOptions.js";
 import dbConnection from "./utils/db.js"
 
 import { PORT, SESSION_SECRET, MONGO_URI } from "./utils/secrets.js"
