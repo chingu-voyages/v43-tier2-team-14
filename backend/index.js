@@ -4,31 +4,15 @@ import session from "express-session"
 import passport from "passport";
 import MongoStore from 'connect-mongo'
 import helmet from "helmet";
-
 import dbConnection from "./utils/db.js"
+
 import { PORT, SESSION_SECRET, MONGO_URI } from "./utils/secrets.js"
+import authRoutes from "./routes/auth.js"
+import booksRoutes from "./routes/books.js"
 
 const app = express()
 
 const port = PORT || 4000
-
-var allowedDomains = ['http://localhost:5173', 'https://https://v43-frontend.ahmedlotfy.me/', 'https://v43-tier2-team14-frontend.onrender.com'];
-
-const corsOptions = {
-  origin: function (origin, callback) {
-    // bypass the requests with no origin (like curl requests, mobile apps, etc )
-    if (!origin) return callback(null, true);
-
-    if (allowedDomains.indexOf(origin) === -1) {
-      var msg = `This site ${origin} does not have an access. Only specific domains are allowed to access it.`;
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  }
-}
-
-import authRoutes from "./routes/auth.js"
-import booksRoutes from "./routes/books.js"
 
 import "./config/passport.js";
 
@@ -50,6 +34,21 @@ app.use(session({
     autoRemove: 'native'
   })
 }));
+
+var allowedDomains = ['http://localhost:5173', 'https://v43-frontend.ahmedlotfy.me/', 'https://v43-tier2-team14-frontend.onrender.com'];
+
+export const corsOptions = {
+  origin: function (origin, callback) {
+    // bypass the requests with no origin (like curl requests, mobile apps, etc )
+    if (!origin) return callback(null, true);
+
+    if (allowedDomains.indexOf(origin) === -1) {
+      var msg = `This site ${origin} does not have an access. Only specific domains are allowed to access it.`;
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}
 
 app.use(cors(corsOptions));
 
