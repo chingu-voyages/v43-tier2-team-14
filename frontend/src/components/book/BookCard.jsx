@@ -65,7 +65,7 @@ const BookCard = ({
     <article className="max-w-xs border bg-zinc-100 border-slate-300 shadow-md rounded-sm px-2 py-6 flex flex-col items-center justify-between">
       <figure className="flex cursor-pointer mb-2">
         <Link to={`${id}`}>
-          <img src={imageLinks.thumbnail} alt="" />
+          {imageLinks && <img src={imageLinks.thumbnail} alt="" />}
         </Link>
       </figure>
       <div className="px-4 text-center flex flex-col items-center space-y-2">
