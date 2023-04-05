@@ -5,8 +5,9 @@ const UserSchema = Schema({
   name: String,
   email: String,
   picture: String,
-  provider: String
+  provider: String,
+  books: [{ type: Schema.Types.ObjectId, ref: 'Book' }],
 }, { timestamps: true })
 
-const User = mongoose.model('user', UserSchema)
+const User = model('User', UserSchema)
 export default User
