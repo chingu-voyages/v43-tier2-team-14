@@ -28,6 +28,24 @@ const store = (set) => ({
       console.log(error);
     }
   },
+
+  // get user wishlist part
+  getUserWishlist: async () => {
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/books/get-user-books`;
+
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        credentials: "include",
+      });
+      const data = await response.json();
+      console.log(data);
+      set({ wishList: data });
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
   addToWishlist: (item) =>
     set((state) => {
       const wishItemExist = state.wishList.some(

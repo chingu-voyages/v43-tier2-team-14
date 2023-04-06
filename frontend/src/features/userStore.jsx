@@ -14,7 +14,6 @@ const store = (set) => ({
   logout: async () => {
     set({ user: null });
   },
-  // getUserWishlist
 });
 
 export const userStore = create(devtools(store));
