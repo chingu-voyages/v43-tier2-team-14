@@ -10,7 +10,6 @@ const Home = () => {
   const user = userStore((state) => state.user);
   return (
     <>
-    <section className="flex flex-col items-start justify-start col-start-3 col-span-full row-start-5 row-span-full">
       <Search />
       <section className="flex flex-col items-start justify-start col-start-3 col-span-full">
         <Categories />

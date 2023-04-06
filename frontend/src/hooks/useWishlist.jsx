@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { bookStore } from "../features/bookStore";
+import { userStore } from "../features/userStore";
 import toast from "react-hot-toast";
 
 const useWishlist = (id, title) => {
+  const user = userStore((state) => state.user);
   const addToWishlist = bookStore((state) => state.addToWishlist);
   const wishList = bookStore((state) => state.wishList);
   const removeFromWishlist = bookStore((state) => state.removeFromWishlist);
+  const addBookDb = bookStore((state) => state.addBookDb);
+  const removeBookDb = bookStore((state) => state.removeBookDb);
 
   const isOnWishlist = (id) => wishList.find((item) => item.id === id);
   const [isAdded, setIsAdded] = useState(isOnWishlist(id));
@@ -23,10 +27,12 @@ const useWishlist = (id, title) => {
   const addItemToWishlist = (item) => {
     if (!isOnWishlist(id)) {
       addToWishlist(item);
+      addBookDb(user._id, item);
       alertAdd(title);
       setIsAdded(!isAdded);
     } else {
       removeFromWishlist(id);
+      removeBookDb(user._id, id);
       alertRemove(title);
       setIsAdded(!isAdded);
     }

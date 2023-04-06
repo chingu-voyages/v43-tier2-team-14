@@ -1,12 +1,7 @@
 import { Link } from "react-router-dom";
 import { BsBookmarkPlus, BsBookmarkDashFill } from "react-icons/bs";
-import { Toaster } from "react-hot-toast";
 import useWishlist from "../../hooks/useWishlist";
-import { bookStore } from "../../features/bookStore";
-import toast, { Toaster } from "react-hot-toast";
-import { useState } from "react";
-import { userStore } from "../../features/userStore";
-
+import { Toaster } from "react-hot-toast";
 const BookCard = ({
   id,
   volumeInfo: {
@@ -19,12 +14,6 @@ const BookCard = ({
   },
 }) => {
   const { isAdded, addItemToWishlist } = useWishlist(id, title);
-  const addToWishlist = bookStore((state) => state.addToWishlist);
-  const wishList = bookStore((state) => state.wishList);
-  const removeFromWishlist = bookStore((state) => state.removeFromWishlist);
-  const user = userStore((state) => state.user);
-  const addBookDb = bookStore((state) => state.addBookDb);
-  const removeBookDb = bookStore((state) => state.removeBookDb);
 
   const item = {
     id,
@@ -36,40 +25,10 @@ const BookCard = ({
     authors,
   };
 
-  const isOnWishlist = (id) => wishList.find((item) => item.id === id);
-  const [isAdded, setIsAdded] = useState(isOnWishlist(id));
-
-  const alertAdd = () =>
-    toast.success(`${title} Added to your wishlist`, {
-      position: "top-right",
-    });
-
-  const alertRemove = () =>
-    toast.error(`${title} is removed from wishlist`, {
-      position: "top-right",
-    });
-
-  const addItemToWishlist = (item) => {
-    if (!isOnWishlist(id)) {
-      addBookDb(user._id, item);
-      addToWishlist(item);
-      alertAdd();
-      setIsAdded(!isAdded);
-      console.log("salamu alykooo");
-    } else {
-      removeFromWishlist(id);
-      removeBookDb(user._id, id);
-      console.log(user._id, id);
-      alertRemove();
-      setIsAdded(!isAdded);
-    }
-  };
-
   return (
     <article className="relative card z-10 max-w-xs border bg-zinc-100 border-slate-300 shadow-md rounded-md px-2 py-6 flex flex-col items-center justify-between">
       <figure className="flex cursor-pointer mb-2">
         <Link to={`${id}`}>
-
           {imageLinks && <img src={imageLinks.thumbnail} alt="" />}
         </Link>
       </figure>
