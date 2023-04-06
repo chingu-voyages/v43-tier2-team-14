@@ -5,11 +5,9 @@
 
 
 :root {
-/*   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
- */  font-family: 'Poppins', sans-serif;
+ font-family: 'Poppins', sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  background-color: #f1eee3;
 
 }
 
@@ -30,7 +28,7 @@ section{
  grid-column-start: 3;
  grid-column: 1/-1; 
  min-height: 95vh;
- margin-top: 75px;
+ margin-top: 25px;
 }
 
 

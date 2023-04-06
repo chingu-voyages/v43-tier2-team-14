@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import { bookStore } from "../features/bookStore";
 import Sidebar from "../components/Sidebar";
 import { userStore } from "../features/userStore";
+import Search from "../components/Search";
 
 const Root = () => {
   // const getBooks = bookStore((state) => state.getBooks);
@@ -21,7 +22,8 @@ const Root = () => {
   }, []);
 
   return (
-    <main className="h-screen bg-gray-200 grid grid-cols-12">
+    <main className="bg-gray-200 grid grid-cols-12">
+      <Search />
       <Sidebar />
       <Outlet />
       <Footer />
