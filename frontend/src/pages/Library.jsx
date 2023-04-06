@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import BooksContainer from "../components/book/BooksContainer";
 
 const Library = () => {
@@ -11,3 +10,4 @@ const Library = () => {
 export default Library;
 
 // the page is intended for testing purposes
+// a margin top 96 px added globally for sections in main css

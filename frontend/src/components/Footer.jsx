@@ -8,7 +8,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="col-start-2 col-span-full row-start-7 py-5 px-3 md:px-10 lg:px-28 bg-[#383638]">
+    <footer className="col-start-1 col-span-full py-5 px-3 md:px-10 lg:px-28 bg-[#ddd] z-10">
       <div className=" mt-5 flex gap-2 justify-center">
         <span className="flex justify-center hover:text-blue-800 items-center bg-grey-300  rounded-full text-black w-8 h-8 text-xl cursor-pointer">
           <FiFacebook />
