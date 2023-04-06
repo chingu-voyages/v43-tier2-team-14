@@ -5,17 +5,22 @@ import passport from "passport";
 import MongoStore from "connect-mongo";
 import helmet from "helmet";
 
-import dbConnection from "./utils/db.js";
+import dbConnection from "./utils/db.js"
 
-import { APP_HOME, PORT, SESSION_SECRET, MONGO_URI } from "./utils/secrets.js";
-import authRoutes from "./routes/auth.js";
-import booksRoutes from "./routes/books.js";
+import { PORT, SESSION_SECRET, MONGO_URI, APP_HOME } from "./utils/secrets.js"
+import authRoutes from "./routes/auth.js"
+import booksRoutes from "./routes/books.js"
 
 const app = express();
 
 const port = PORT || 4000;
 
 import "./config/passport.js";
+
+app.use(cors({
+  origin: APP_HOME,
+  credentials: true
+}));
 
 // Middlewares
 app.use(helmet());
@@ -35,26 +40,6 @@ app.use(
       ttl: 14 * 24 * 60 * 60,
       autoRemove: "native",
     }),
-  })
-);
-
-var allowedDomains = [
-  "http://localhost:5173",
-  "https://https://v43-frontend.ahmedlotfy.me/",
-  "https://v43-tier2-team14-frontend.onrender.com",
-];
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      // bypass the requests with no origin (like curl requests, mobile apps, etc )
-      if (!origin) return callback(null, true);
-
-      if (allowedDomains.indexOf(origin) === -1) {
-        var msg = `This site ${origin} does not have an access. Only specific domains are allowed to access it.`;
-        return callback(new Error(msg), false);
-      }
-      return callback(null, true);
-    },
   })
 );
 
@@ -80,7 +65,6 @@ app.get("/api/user", (req, res, next) => {
   // res.json(req.user);
   const user = req.user;
   res.status(200).json({ user });
-  console.log(req.user);
 });
 
 app.get("/", (req, res, next) => {
@@ -94,6 +78,6 @@ app.use(function (err, req, res, next) {
 });
 
 app.listen(port, () => {
-  dbConnection();
-  console.log(`SERVER HTTP server started on port ${port}`);
-});
+  dbConnection()
+  console.log(`SERVER HTTP server started on port ${port}`)
+})

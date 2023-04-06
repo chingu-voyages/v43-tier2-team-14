@@ -2,7 +2,7 @@ import { bookStore } from "../../features/bookStore";
 import BookCard from "./BookCard";
 import NoContent from "../NoContent";
 
-const BooksContainer = () => {
+const   BooksContainer = () => {
   const bookList = bookStore((state) => state.bookList);
   return (
     <>

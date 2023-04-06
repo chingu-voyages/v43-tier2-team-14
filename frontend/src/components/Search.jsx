@@ -11,12 +11,10 @@ const Search = () => {
   };
 
   const handleLogout = () => {
-    console.log(user);
     logout;
     localStorage.removeItem("isAuthenticated");
   };
 
-  console.log(user);
   return (
     <div className="col-start-3 col-span-full row-start-1 w-full py-5">
       <div className="flex justify-between items-center">
