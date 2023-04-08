@@ -22,11 +22,11 @@ const Root = () => {
   }, []);
 
   return (
-    <main className="bg-gray-200 grid grid-cols-12">
+    <main className="bg-gray-200 grid grid-cols-12 h-screen">
       <Search />
       <Sidebar />
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 };

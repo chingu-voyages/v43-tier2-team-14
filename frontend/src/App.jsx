@@ -33,14 +33,9 @@ function App() {
           element: <BookDetails />,
         },
         {
-          path: "categories",
-          element: <Categories />,
-        },
-        {
           path: "categories/:category",
           element: <Category />,
         },
-
         {
           path: "login",
           element: <LogIn />,
