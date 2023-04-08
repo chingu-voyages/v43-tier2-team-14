@@ -11,13 +11,9 @@ const Home = () => {
     <>
       <section className="flex flex-col items-start justify-start col-start-3 col-span-full">
         <CategoriesNav />
-        {/* <Category /> */}
         <h1 className="text-3xl bg-blue-300 font-bold underline mb-4">
           Welcome To The Main Project of Team-14
         </h1>
-        <Link to="books">
-          <GenericBtns title="to library" icon={<ImBook />} />
-        </Link>
       </section>
     </>
   );

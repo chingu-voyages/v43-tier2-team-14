@@ -3,15 +3,12 @@ import "./App.css";
 import Root from "./pages/Root";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
-import Register from "./pages/Register";
 import LogIn from "./pages/LogIn";
 import Error from "./pages/Error";
 import BookDetails from "./pages/BookDetails";
 import Wishlist from "./pages/WishList";
-import Library from "./pages/Library";
+import Books from "./pages/Books";
 import "./App.css";
-import Categories from "./components/categories/Categories";
-import Category from "./components/categories/Category";
 
 function App() {
   const router = createBrowserRouter([
@@ -26,15 +23,15 @@ function App() {
         },
         {
           path: "books",
-          element: <Library />,
+          element: <Books />,
+        },
+        {
+          path: "books/:category",
+          element: <Books />,
         },
         {
           path: "books/:id",
           element: <BookDetails />,
-        },
-        {
-          path: "categories/:category",
-          element: <Category />,
         },
         {
           path: "login",
@@ -47,10 +44,6 @@ function App() {
         {
           path: "cart",
           element: <Cart />,
-        },
-        {
-          path: "register",
-          element: <Register />,
         },
       ],
     },

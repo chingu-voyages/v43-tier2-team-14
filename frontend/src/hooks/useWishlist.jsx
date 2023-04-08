@@ -27,12 +27,12 @@ const useWishlist = (id, title) => {
   const addItemToWishlist = (item) => {
     if (!isOnWishlist(id)) {
       addToWishlist(item);
-      addBookDb(user._id, item);
+      user && addBookDb(user._id, item);
       alertAdd(title);
       setIsAdded(!isAdded);
     } else {
       removeFromWishlist(id);
-      removeBookDb(user._id, id);
+      user && removeBookDb(user._id, id);
       alertRemove(title);
       setIsAdded(!isAdded);
     }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const booksArr = [
   "action",
@@ -8,7 +8,6 @@ export const booksArr = [
   "comic",
   "graphic",
   "mystery",
-  "fantasy",
   "horror",
   "romance",
   "sci-fi",
@@ -17,11 +16,13 @@ export const booksArr = [
 
 const CategoriesNav = () => {
   return (
-    <div className="flex gap-5">
-      {booksArr.map((category, idx) => (
-        <Link key={idx} to={`/categories/${category}`}>
-          {category}
-        </Link>
+    <div className="flex gap-1 mt-5">
+      {booksArr.map((category) => (
+        <NavLink key={category} to={`/books/${category}`}>
+          <p className="cat capitalize rounded-md px-3 py-1 hover:text-white duration-300 hover:bg-red-600">
+            {category}
+          </p>
+        </NavLink>
       ))}
     </div>
   );
