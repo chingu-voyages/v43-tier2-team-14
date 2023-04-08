@@ -8,7 +8,7 @@ import Search from "../components/Search";
 
 const Root = () => {
   // const getBooks = bookStore((state) => state.getBooks);
-  const bookList = bookStore((state) => state.bookList);
+  //  const bookList = bookStore((state) => state.bookList);
   const user = userStore((state) => state.user);
   const fetchUserData = userStore((state) => state.fetchUserData);
 
@@ -22,11 +22,11 @@ const Root = () => {
   }, []);
 
   return (
-    <main className="bg-gray-200 grid grid-cols-12 h-screen">
+    <main className="bg-gray-200 grid grid-cols-12 min-h-screen">
       <Search />
       <Sidebar />
       <Outlet />
-      {/* <Footer /> */}
+      <Footer />
     </main>
   );
 };

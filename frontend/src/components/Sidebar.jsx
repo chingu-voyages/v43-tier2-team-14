@@ -11,12 +11,10 @@ const Sidebar = () => {
   return (
     <aside className="col-start-1 col-end-2 w-16 md:w-24 fixed py-12 border border-r-zinc-300">
       <SidebarItem icon={<AiOutlineHome />} path="/" />
-      <SidebarItem icon={<BsBookmark />} path="/wishlist" />
       <SidebarItem icon={<GiBookshelf />} path="/books" />
-      <SidebarItem icon={<AiOutlineShoppingCart />} path="/cart" />
+      <SidebarItem icon={<BsBookmark />} path="/wishlist" />
       <SidebarItem icon={<BiUserCircle />} path="/logIn" />
-      <SidebarItem icon={<FiSettings />} path="/register" />
-      <SidebarItem icon={<FiLogOut />} path="/register" />
+      <SidebarItem icon={<AiOutlineShoppingCart />} path="/cart" />
     </aside>
   );
 };

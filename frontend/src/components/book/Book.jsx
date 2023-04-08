@@ -6,10 +6,14 @@ import useFetch from "../../hooks/useFetch";
 import Loading from "../UI/Loading";
 
 const Book = () => {
-  const single_book_url = `${import.meta.env.VITE_BACKEND_URL}/api/books/`;
+  // const single_book_url = `${import.meta.env.VITE_BACKEND_URL}/api/books/`;
+  const single_book_url = `https://www.googleapis.com/books/v1/volumes/`;
+
   const { id } = useParams();
   const { data: singleBook, isLoading } = useFetch(`${single_book_url}${id}`);
   // const singleBook = data.Book.volumeInfo;
+  console.log(`${single_book_url}${id}`);
+  console.log(singleBook);
   if (isLoading) {
     return <Loading />;
   }

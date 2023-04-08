@@ -29,7 +29,7 @@ const WishListItem = ({
         <h2 className="text-xl tracking-wider font-bold">{title}</h2>
         <span className="text-red-600 font-semibold">{authors}</span>
         <p className="px-2 py-0.5 mx-auto text-xs bg-red-500 text-white rounded-md md:ml-0 w-fit">
-          {categories[0]}
+          {categories}
         </p>
         <p>{pageCount} pages</p>
       </div>
