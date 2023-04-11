@@ -10,6 +10,7 @@ const Featured = () => {
     getFeatured();
     console.log(featuredList);
   }, []);
+  
   return <FeaturedListWrapper />;
 };
 

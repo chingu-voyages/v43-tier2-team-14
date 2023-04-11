@@ -93,16 +93,33 @@ const store = (set) => ({
 
   getFeatured: async (date) => {
     try {
-      const url = `${
-        import.meta.env.VITE_BACKEND_URL
-      }/api/books/featured-books`;
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json();
+      if (!date) {
+        const url = `${
+          import.meta.env.VITE_BACKEND_URL
+        }/api/books/featured-books`;
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await response.json();
+        return data;
+        console.log(data.featuredBooks.results);
+      }
+      if (date) {
+        const url = `${
+          import.meta.env.VITE_BACKEND_URL
+        }/api/books/featured-books?date=${date}`;
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await response.json();
+        return data;
+      }
       console.log(data.featuredBooks.results);
       set({ featuredList: data.featuredBooks.results });
     } catch (error) {
