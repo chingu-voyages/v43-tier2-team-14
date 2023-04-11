@@ -6,6 +6,7 @@ import axios from "axios";
 const store = (set) => ({
   bookList: [],
   wishList: [],
+  featuredList: [],
   getBooks: async () => {
     const url = `${
       import.meta.env.VITE_BACKEND_URL
@@ -25,7 +26,7 @@ const store = (set) => ({
       const data = await response.json();
       set({ bookList: data.categories.items });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   },
 
@@ -42,7 +43,7 @@ const store = (set) => ({
       console.log(data);
       set({ wishList: data });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   },
 
@@ -58,10 +59,12 @@ const store = (set) => ({
       }
       return state;
     }),
+
   removeFromWishlist: (id) =>
     set((state) => ({
       wishList: state.wishList.filter((item) => item.id !== id),
     })),
+
   addBookDb: async (userId, item) => {
     const url = `${import.meta.env.VITE_BACKEND_URL}/api/books/add-book`;
     fetch(url, {
@@ -72,15 +75,39 @@ const store = (set) => ({
       },
     });
   },
+
   removeBookDb: async (userId, id) => {
-    const url = `${import.meta.env.VITE_BACKEND_URL}/api/books/remove-book`;
-    fetch(url, {
-      method: "delete",
-      body: JSON.stringify({ userId, id }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    try {
+      const url = `${import.meta.env.VITE_BACKEND_URL}/api/books/remove-book`;
+      fetch(url, {
+        method: "delete",
+        body: JSON.stringify({ userId, id }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
+  getFeatured: async (date) => {
+    try {
+      const url = `${
+        import.meta.env.VITE_BACKEND_URL
+      }/api/books/featured-books`;
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      console.log(data.featuredBooks.results);
+      set({ featuredList: data.featuredBooks.results });
+    } catch (error) {
+      console.error(error);
+    }
   },
 });
 
