@@ -8,7 +8,7 @@ const useFetch = (url) => {
     try {
       const res = await fetch(url);
       const incomingData = await res.json();
-      setData(incomingData.Book.volumeInfo);
+      setData(incomingData?.Book?.volumeInfo);
       setIsLoading(false);
       console.log(incomingData);
     } catch (error) {

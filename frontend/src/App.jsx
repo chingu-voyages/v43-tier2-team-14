@@ -30,7 +30,7 @@ function App() {
           element: <Books />,
         },
         {
-          path: "books/:id",
+          path: "book/:id",
           element: <BookDetails />,
         },
         {

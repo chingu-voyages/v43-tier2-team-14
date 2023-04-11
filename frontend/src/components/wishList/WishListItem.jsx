@@ -22,7 +22,7 @@ const WishListItem = ({
 
   return (
     <article className="w-3/4 xl:w-1/2 mx-auto shadow-md bg-zinc-100 flex flex-col md:flex-row justify-center md:justify-around items-center my-6 py-4 md:p-4 space-x-4 border-2 rounded-md hover:shadow-sm">
-      <Link to={`/books/${id}`}>
+      <Link to={`/book/${id}`}>
         <img src={imageLinks.thumbnail} alt={title} />
       </Link>
       <div className="flex flex-col p-4 flex-1 space-y-4 text-center md:text-left">

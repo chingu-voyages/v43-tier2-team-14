@@ -28,7 +28,7 @@ const BookCard = ({
   return (
     <article className="relative card z-10 max-w-xs border bg-zinc-100 border-slate-300 shadow-md rounded-md px-2 py-6 flex flex-col items-center justify-between">
       <figure className="flex cursor-pointer mb-2">
-        <Link to={`/books/${id}`}>
+        <Link to={`/book/${id}`}>
           {imageLinks && <img src={imageLinks.thumbnail} alt={title} />}
         </Link>
       </figure>
