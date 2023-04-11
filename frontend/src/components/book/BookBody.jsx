@@ -33,10 +33,15 @@ const BookBody = ({
         {title}
       </h2>
       <div className="capitalize text-red-500 font-semibold">{authors[0]}</div>
-      <p className="px-2 py-0.5 text-xs bg-green-500 text-white rounded-md w-fit">
-        {categories[0]}
-      </p>
-      <p className="leading-7">{description.substring(0, 250)}</p>
+
+      {categories && (
+        <p className="px-2 py-0.5 text-xs bg-green-500 text-white rounded-md w-fit">
+          {categories[0]}
+        </p>
+      )}
+      {description && (
+        <p className="leading-7">{description.substring(0, 250)}</p>
+      )}
       <span className="bg-orange-500 font-bold text-xs capitalize text-white w-fit py-1 px-3 rounded-md">
         pages count: {pageCount}
       </span>

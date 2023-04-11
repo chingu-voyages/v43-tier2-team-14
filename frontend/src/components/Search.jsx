@@ -16,7 +16,7 @@ const Search = () => {
   };
 
   return (
-    <div className="col-start-3 col-span-full row-start-1 row-end-2 w-full ">
+    <div className="col-start-3 col-span-full row-start-1 row-end-2 w-full mt-5 ">
       <div className="flex justify-between items-center">
         <div className="flex justify-start items-center gap-3 w-[50%]">
           <IoSearchOutline className="text-2xl" />
