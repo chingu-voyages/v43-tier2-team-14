@@ -8,17 +8,8 @@ const router = express.Router()
 
 router.get('/featured-books', async (req, res) => {
   try {
-    const url = `${NYTIMES_BOOK_URL}/lists/full-overview.json`
-    const { date } = req.query
-    let fetchUrl;
-    if ("date" in req.query) {
-      fetchUrl = `${url}?published_date=${date}&api-key=${NYTIMES_BOOK_KEY} 
-      `
-    }
-    if (!date) {
-      fetchUrl = `${url}?api-key=${NYTIMES_BOOK_KEY}`
-    }
-    const response = await fetch(`${fetchUrl}`);
+    const fetchUrl = `${NYTIMES_BOOK_URL}/lists/full-overview.json?api-key=${NYTIMES_BOOK_KEY}`
+    const response = await fetch(fetchUrl);
     const data = await response.json();
     console.log(fetchUrl)
     return res.status(200).json({ message: "books fetched successfully", featuredBooks: data })
