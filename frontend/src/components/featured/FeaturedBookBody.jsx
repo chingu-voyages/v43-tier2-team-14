@@ -9,7 +9,10 @@ const FeaturedBookBody = () => {
     <div>
       {featuredList.lists.map((list) => {
         return (
-          <div className="flex flex-row flex-wrap w-[250px]">
+          <div
+            key={list.list_name}
+            className="flex flex-row flex-wrap w-[250px]"
+          >
             <h1 className="bg-red-300 rounded-lg text-center my-10 hover:bg-red-400 transition-all duration-500 px-7 py-3 cursor-pointer">
               {list.list_name}
             </h1>
