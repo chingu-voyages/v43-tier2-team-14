@@ -8,7 +8,8 @@ const router = express.Router()
 
 router.get('/featured-books', async (req, res) => {
   try {
-    const fetchUrl = `${NYTIMES_BOOK_URL}/lists/full-overview.json?api-key=${NYTIMES_BOOK_KEY}`
+    // const fetchUrl = `${NYTIMES_BOOK_URL}/lists/full-overview.json?api-key=${NYTIMES_BOOK_KEY}`
+    const fetchUrl = `${NYTIMES_BOOK_URL}/lists/overview.json?api-key=${NYTIMES_BOOK_KEY}`
     const response = await fetch(fetchUrl);
     const data = await response.json();
     console.log(fetchUrl)
