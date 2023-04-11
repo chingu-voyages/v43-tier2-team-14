@@ -2,32 +2,10 @@ import express from "express"
 import fetch from "node-fetch"
 import Book from "../models/bookModel.js"
 import User from "../models/userModel.js"
-import { GOOGLE_BOOKAPI_URL, GOOGLE_BOOKAPI, NYTIMES_BOOK_KEY, NYTIMES_BOOK_URL, NYTIMES_BOOK_SECRET } from "../utils/secrets.js"
+
+import { GOOGLE_BOOKAPI_URL, GOOGLE_BOOKAPI } from "../utils/secrets.js"
 
 const router = express.Router()
-
-router.get('/featured-books', async (req, res) => {
-  try {
-    const url = `${NYTIMES_BOOK_URL}/lists/full-overview.json`
-    const { date } = req.query
-    let fetchUrl;
-    if ("date" in req.query) {
-      fetchUrl = `${url}?published_date=${date}&api-key=${NYTIMES_BOOK_KEY} 
-      `
-    }
-    if (!date) {
-      fetchUrl = `${url}?api-key=${NYTIMES_BOOK_KEY}`
-    }
-    const response = await fetch(`${fetchUrl}`);
-    const data = await response.json();
-    console.log(fetchUrl)
-    return res.status(200).json({ message: "books fetched successfully", featuredBooks: data })
-
-  } catch (error) {
-    console.error(error);
-    res.status(500).send(error);
-  }
-});
 
 router.get('/get-user-books', async (req, res, next) => {
   try {

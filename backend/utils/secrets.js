@@ -10,7 +10,3 @@ export const GOOGLE_BOOKAPI = process.env.GOOGLE_BOOKAPI
 export const SESSION_SECRET = process.env.SESSION_SECRET
 export const GOOGLE_BOOKAPI_URL = process.env.GOOGLE_BOOKAPI_URL
 export const APP_HOME = process.env.APP_HOME
-export const NYTIMES_BOOK_KEY = process.env.NYTIMES_BOOK_KEY
-export const NYTIMES_BOOK_SECRET = process.env.NYTIMES_BOOK_SECRET
-export const NYTIMES_BOOK_URL = process.env.NYTIMES_BOOK_URL
-
