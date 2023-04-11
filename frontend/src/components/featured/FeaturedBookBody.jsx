@@ -7,7 +7,7 @@ const FeaturedBookBody = () => {
   // const list = featuredList.lists[0];
   return (
     <div>
-      {featuredList.lists.map((list) => {
+      {featuredList.lists?.map((list) => {
         return (
           <div
             key={list.list_name}

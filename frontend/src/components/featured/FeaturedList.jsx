@@ -6,7 +6,7 @@ const FeaturedList = ({ list }) => {
   console.log(books);
   return (
     <div className="flex gap-6">
-      {books.map((book) => {
+      {books?.map((book) => {
         return (
           <div key={book.title} className="flex flex-col w-full  items-start ">
             <h4 className="w-52 px-6 py-3 bg-slate-400 rounded-lg font-light text-sm text-center">
