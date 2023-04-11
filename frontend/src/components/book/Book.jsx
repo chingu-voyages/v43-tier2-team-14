@@ -10,8 +10,11 @@ const Book = () => {
   const single_book_url = `https://www.googleapis.com/books/v1/volumes/`;
 
   const { id } = useParams();
-  const { data: singleBook, isLoading } = useFetch(`${single_book_url}${id}`);
-  // const singleBook = data.Book.volumeInfo;
+  // const { data: singleBook, isLoading } = useFetch(`${single_book_url}${id}`);
+  const { data: singleBook, isLoading } = useFetch(`${
+    import.meta.env.VITE_BACKEND_URL
+  }/api/books/${id}
+  `);
   console.log(`${single_book_url}${id}`);
   console.log(singleBook);
   if (isLoading) {
