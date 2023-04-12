@@ -12,7 +12,8 @@ const Sidebar = () => {
       <SidebarItem icon={<GiBookshelf />} path="/books" />
       <SidebarItem icon={<BsBookmark />} path="/wishlist" />
       <SidebarItem icon={<BiUserCircle />} path="/logIn" />
-      <SidebarItem icon={<AiOutlineShoppingCart />} path="/cart" />
+      {/*       <SidebarItem icon={<AiOutlineShoppingCart />} path="/cart" />
+       */}{" "}
     </aside>
   );
 };

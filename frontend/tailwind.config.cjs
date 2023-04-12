@@ -13,6 +13,7 @@ module.exports = {
       gridTemplateColumns: {
         // add responsive container for 5 cards
         200: "repeat(auto-fit, minmax(200px, 1fr))",
+        250: "repeat(auto-fit, minmax(250px, 1fr))",
       },
     },
   },
