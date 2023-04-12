@@ -1,13 +1,20 @@
 import FeaturedBookBody from "./FeaturedBookBody";
 import { bookStore } from "../../features/bookStore";
+import { useEffect } from "react";
 
 const FeaturedListWrapper = () => {
   const featuredList = bookStore((state) => state.featuredList);
+  const getFeatured = bookStore((state) => state.getFeatured);
+
+  useEffect(() => {
+    getFeatured();
+    console.log(featuredList);
+  }, []);
 
   console.log(featuredList);
   return (
-    <div className="w-full">
-      <h2 className="mb-10 col-start-1 col-span-full">
+    <div className="w-full md:pr-24 mb-24">
+      <h2 className="font-semibold text-center">
         Best Sellers Books For{" "}
         {new Date(featuredList.bestsellers_date).toLocaleDateString("en-us", {
           weekday: "long",

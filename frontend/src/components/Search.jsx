@@ -41,7 +41,11 @@ const Search = () => {
           ) : (
             <div className="flex items-center h-4 gap-6">
               <div className="flex justify-center items-center gap-3">
-                <img className="rounded-full h-16" src={user?.picture} alt="" />
+                <img
+                  className="rounded-full h-10"
+                  src={user?.picture}
+                  alt="user_pic"
+                />
                 <h2 className="font-semibold">{user?.name}</h2>
               </div>
               <a

@@ -47,7 +47,8 @@ const BookBody = ({
       </span>
 
       <div className="flex justify-between pt-16">
-        <GenericBtns title="add to cart" icon={<BsCartPlusFill />} />
+        {/*         <GenericBtns title="add to cart" icon={<BsCartPlusFill />} />
+         */}{" "}
         <div className="flex space-x-4 items-center">
           {/*           experimental
            */}{" "}
