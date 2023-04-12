@@ -1,8 +1,15 @@
 import FeaturedBookBody from "./FeaturedBookBody";
 import { bookStore } from "../../features/bookStore";
+import { useEffect } from "react";
 
 const FeaturedListWrapper = () => {
   const featuredList = bookStore((state) => state.featuredList);
+  const getFeatured = bookStore((state) => state.getFeatured);
+
+  useEffect(() => {
+    getFeatured();
+    console.log(featuredList);
+  }, []);
 
   console.log(featuredList);
   return (

@@ -1,4 +1,4 @@
-import CategoriesNav from "../components/categories/CategoriesNav";
+import CategoriesNav from "../components/CategoriesNav";
 import BooksContainer from "../components/book/BooksContainer";
 
 const Books = () => {
