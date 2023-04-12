@@ -10,7 +10,11 @@ module.exports = {
         "text-btn": "#999ba0",
         "bg-btn": "#272a34",
       },
+      gridTemplateColumns: {
+        // add responsive container for 5 cards
+        200: "repeat(auto-fit, minmax(200px, 1fr))",
+      },
     },
   },
   plugins: [],
-}
+};

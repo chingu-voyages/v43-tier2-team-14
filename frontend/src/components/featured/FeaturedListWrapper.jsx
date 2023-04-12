@@ -6,8 +6,8 @@ const FeaturedListWrapper = () => {
 
   console.log(featuredList);
   return (
-    <div className="w-full">
-      <h2 className="mb-10 col-start-1 col-span-full">
+    <div className="w-full md:pr-24 mb-24">
+      <h2 className="font-semibold text-center">
         Best Sellers Books For{" "}
         {new Date(featuredList.bestsellers_date).toLocaleDateString("en-us", {
           weekday: "long",
