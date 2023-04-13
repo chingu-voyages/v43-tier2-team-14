@@ -6,7 +6,7 @@ import { GOOGLE_BOOKAPI_URL, GOOGLE_BOOKAPI, NYTIMES_BOOK_KEY, NYTIMES_BOOK_URL,
 
 const router = express.Router()
 
-router.get('/featured-books', async (req, res) => {
+router.get('/featured-books', async (req, res, next) => {
   try {
     // const fetchUrl = `${NYTIMES_BOOK_URL}/lists/full-overview.json?api-key=${NYTIMES_BOOK_KEY}`
     const fetchUrl = `${NYTIMES_BOOK_URL}/lists/overview.json?api-key=${NYTIMES_BOOK_KEY}`
@@ -20,6 +20,39 @@ router.get('/featured-books', async (req, res) => {
     res.status(500).send(error);
   }
 });
+
+router.get('/single-book/:title', async (req, res, next) => {
+  try {
+    const { title } = req.params
+    console.log(title)
+    const url = GOOGLE_BOOKAPI_URL
+    const apiKey = GOOGLE_BOOKAPI
+    const response = await fetch(`${url}?q=${title}&maxResults=1&key=${apiKey}`)
+    console.log(response)
+    const data = await response.json()
+    console.log("from inside singlebook title")
+    res.status(200).json({ singleBook: data })
+  } catch (error) {
+    res.status(400).json({ message: error.message })
+  }
+})
+
+router.get('/search-books/:query', async (req, res, next) => {
+  try {
+    const { query } = req.params
+    console.log(query)
+    const url = GOOGLE_BOOKAPI_URL
+    const apiKey = GOOGLE_BOOKAPI
+    const response = await fetch(`${url}?q=${query}+intitle:${query
+    }&key=${apiKey}`)
+    console.log(response)
+    const data = await response.json()
+    console.log("from inside singlebook title")
+    res.status(200).json({ singleBook: data })
+  } catch (error) {
+    res.status(400).json({ message: error.message })
+  }
+})
 
 router.get('/get-user-books', async (req, res, next) => {
   try {
@@ -94,7 +127,6 @@ router.get('/:id', async (req, res, next) => {
   } catch (error) {
     res.status(400).json({ message: 'Error Fetching Book' })
   }
-
 });
 
 router.get('/', async (req, res, next) => {
