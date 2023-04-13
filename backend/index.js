@@ -8,8 +8,10 @@ import helmet from "helmet";
 import dbConnection from "./utils/db.js"
 
 import { PORT, SESSION_SECRET, MONGO_URI, APP_HOME } from "./utils/secrets.js"
+
 import authRoutes from "./routes/auth.js"
 import booksRoutes from "./routes/books.js"
+import cartRoutes from "./routes/cart.js"
 
 const app = express();
 
@@ -60,6 +62,7 @@ app.use(passport.session());
 
 app.use("/api/books", booksRoutes);
 app.use("/auth", authRoutes);
+app.use("/api/cart", cartRoutes)
 
 app.get("/api/user", (req, res, next) => {
   // res.json(req.user);
