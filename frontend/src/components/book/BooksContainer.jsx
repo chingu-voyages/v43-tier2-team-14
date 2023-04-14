@@ -8,13 +8,16 @@ const BooksContainer = () => {
   console.log(category);
   const [books, setBooks] = useState([]);
   const fetchCategory = async () => {
-    const data = await axios.get(
+    const res = await fetch(
       // grid-cols-1 md:grid-cols-2 lg:grid-cols-3
       // `${import.meta.env.VITE_BACKEND_URL}/api/books?category=${category}`
-      `https://www.googleapis.com/books/v1/volumes?q=${category}`
+      `${
+        import.meta.env.VITE_BACKEND_URL
+      }/api/books?category=${category}&lang=en`
     );
-    console.log(data.data.items);
-    setBooks(data.data.items);
+    const data = await res.json();
+    console.log(data.categories.items);
+    setBooks(data.categories.items);
   };
 
   useEffect(() => {
