@@ -8,7 +8,7 @@ import useWishlist from "../../hooks/useWishlist";
 import BookBody from "../book/BookBody";
 import BookImage from "../book/BookImage";
 import NoContent from "../NoContent";
-
+import Loading from "../UI/Loading";
 const FeaturedSingleBook = () => {
   const { id } = useParams();
   const [singleBook, setSingleBook] = useState(null);
@@ -30,7 +30,7 @@ const FeaturedSingleBook = () => {
   return (
     <section className="mx-auto mb-14 px-12 lg:px-24">
       {!singleBook ? (
-        <NoContent message="there is no data available at the moment!" />
+        <Loading />
       ) : (
         <div className="section-wrapper grid grid-col-1 lg:grid-cols-2 justify-center items-start">
           <BookImage singleBook={singleBook.volumeInfo} />

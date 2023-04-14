@@ -44,7 +44,7 @@ router.get('/search-books/:query', async (req, res, next) => {
     const url = GOOGLE_BOOKAPI_URL
     const apiKey = GOOGLE_BOOKAPI
     const response = await fetch(`${url}?q=${query}+intitle:${query
-    }&key=${apiKey}`)
+      }&key=${apiKey}`)
     console.log(response)
     const data = await response.json()
     console.log("from inside singlebook title")
@@ -153,6 +153,11 @@ router.get('/', async (req, res, next) => {
     if ("limit" in req.query) {
       const { limit } = req.query
       fetchUrl += `&maxResults=${limit}`
+    }
+
+    if ("index" in req.query) {
+      const { index } = req.query
+      fetchUrl += `&startIndex=${index}`
     }
     console.log(fetchUrl)
     const response = await fetch(`${fetchUrl}&key=${apiKey}`)
