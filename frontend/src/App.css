@@ -59,3 +59,50 @@ section{
 }
 
 
+
+/* animations */
+
+ @-webkit-keyframes flashing {
+  0%,
+40% {
+  opacity: 1;
+}
+
+100% {
+  opacity: 0;
+  width: 200%;
+  height: 200%;
+}
+ }
+
+ @keyframes flashing {
+  0%,
+40% {
+  opacity: 1;
+}
+
+100% {
+  opacity: 0;
+  width: 200%;
+  height: 200%;
+}
+ }
+
+     figure .animation:before {
+         content: "";
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 0;
+         height: 0;
+         background-color: rgb(255 255 255/ 50%);
+         z-index: 2;
+       }
+  
+       figure .animation:hover:before {
+         -webkit-animation: flashing 0.7s;
+                 animation: flashing 0.7s;
+       }
+
+/* animations */

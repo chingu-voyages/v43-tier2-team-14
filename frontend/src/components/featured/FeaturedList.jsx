@@ -1,25 +1,27 @@
 import { Link } from "react-router-dom";
-
 const FeaturedList = ({ list }) => {
   const { books } = list;
+  console.log(books);
 
   return (
-    <div className="w-full grid grid-cols-200 gap-6">
+    <div className="grid w-full gap-6 grid-cols-200">
       {books?.map((book) => {
+        const { title, book_image, primary_isbn13: id } = book;
         return (
-          <article key={book.title} className="flex flex-col">
-            <Link to={book.title}>
-              <h4 className="px-6 py-3 flex-initial bg-slate-400 rounded-lg font-semi-bold text-sm text-center">
-                {book.title.substring(0, 15)}
-              </h4>
-            </Link>
-
-            <Link to={book.title}>
-              <img
-                className="pt-6 flex-1"
-                src={book.book_image}
-                alt={`${book.title} Cover Image`}
-              />
+          <article key={id} className="flex flex-col">
+            <h4 className="flex-initial px-6 py-3 text-sm text-center rounded-lg bg-slate-400 font-semi-bold">
+              {title.substring(0, 15)}
+            </h4>
+            <Link to={title}>
+              <figure className="relative mt-6 overflow-hidden">
+                <div className="flex animation">
+                  <img
+                    src={book_image}
+                    alt={`${title} Cover Image`}
+                    className="flex-1 min-h-full"
+                  />
+                </div>
+              </figure>
             </Link>
           </article>
         );

@@ -7,13 +7,12 @@ import SidebarItem from "./SidebarItem";
 
 const Sidebar = () => {
   return (
-    <aside className="col-start-1 col-end-2 w-16 md:w-24 fixed py-24 border min-h-screen border-r-zinc-300">
+    <aside className="fixed w-16 min-h-screen col-start-1 col-end-2 py-24 border md:w-24 border-r-zinc-300">
       <SidebarItem icon={<AiOutlineHome />} path="/" />
       <SidebarItem icon={<GiBookshelf />} path="/books" />
       <SidebarItem icon={<BsBookmark />} path="/wishlist" />
       <SidebarItem icon={<BiUserCircle />} path="/logIn" />
-      {/*       <SidebarItem icon={<AiOutlineShoppingCart />} path="/cart" />
-       */}{" "}
+      <SidebarItem icon={<AiOutlineShoppingCart />} path="/cart" />
     </aside>
   );
 };
