@@ -47,7 +47,8 @@ const Search = () => {
       <input
         type="text"
         placeholder="Search book name, author, edition ...."
-        className="w-[50%] py-3 outline-none border-none bg-transparent"
+        className="w-1/2 py-3 bg-transparent border-none outline-none"
+
         value={value}
         onChange={(event) => handleSearchInput(event)}
       />

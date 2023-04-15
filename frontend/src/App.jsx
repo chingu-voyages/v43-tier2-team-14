@@ -46,10 +46,10 @@ function App() {
           path: "wishlist",
           element: <Wishlist />,
         },
-        /*  {
+        {
           path: "cart",
           element: <Cart />,
-        }, */
+        },
       ],
     },
   ]);

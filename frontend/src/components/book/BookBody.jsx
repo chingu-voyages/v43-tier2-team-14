@@ -1,6 +1,4 @@
-import { BsCartPlusFill } from "react-icons/bs";
 import { Toaster } from "react-hot-toast";
-import GenericBtns from "../UI/GenericBtns";
 import useWishlist from "../../hooks/useWishlist";
 import { BsBookmarkPlus, BsBookmarkDashFill } from "react-icons/bs";
 
@@ -29,13 +27,13 @@ const BookBody = ({
   return (
     <article className="flex flex-col space-y-4">
       {title && (
-        <h2 className="text-4xl font-bold tracking-widest leading-tight	 text-center lg:text-left">
+        <h2 className="text-4xl font-bold leading-tight tracking-widest text-center lg:text-left">
           {title}
         </h2>
       )}
 
       {authors && (
-        <div className="capitalize text-red-500 font-semibold">
+        <div className="font-semibold text-red-500 capitalize">
           {authors[0]}
         </div>
       )}
@@ -50,7 +48,7 @@ const BookBody = ({
       )}
 
       {pageCount && (
-        <span className="bg-orange-500 font-bold text-xs capitalize text-white w-fit py-1 px-3 rounded-md">
+        <span className="px-3 py-1 text-xs font-bold text-white capitalize bg-orange-500 rounded-md w-fit">
           pages count: {pageCount}
         </span>
       )}
@@ -58,11 +56,11 @@ const BookBody = ({
       <div className="flex justify-between pt-16">
         {/*         <GenericBtns title="add to cart" icon={<BsCartPlusFill />} />
          */}{" "}
-        <div className="flex space-x-4 items-center">
+        <div className="flex items-center space-x-4">
           {/*           experimental
            */}{" "}
           <div
-            className="p-3 text-xl flex justify-center w-12 mx-auto cursor-pointer duration-300 text-text-btn hover:text-text-main"
+            className="flex justify-center w-12 p-3 mx-auto text-xl duration-300 cursor-pointer text-text-btn hover:text-text-main"
             onClick={() => addItemToWishlist(item)}
           >
             {!isAdded ? <BsBookmarkPlus /> : <BsBookmarkDashFill />}
