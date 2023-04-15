@@ -47,8 +47,8 @@ router.get('/search-books/:query', async (req, res, next) => {
       }&key=${apiKey}`)
     console.log(response)
     const data = await response.json()
-    console.log("from inside singlebook title")
-    res.status(200).json({ singleBook: data })
+    console.log("from inside search-books intitle")
+    res.status(200).json({ books: data })
   } catch (error) {
     res.status(400).json({ message: error.message })
   }
