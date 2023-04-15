@@ -9,6 +9,12 @@ const Search = () => {
 
   const debouncedValue = useDebounce(value, 1000);
 
+  const [isClicked, setIsClicked] = useState(false);
+
+  const clearInput = () => {
+    setValue("");
+  };
+
   const fetchSearchResults = async () => {
     setSearchResults([]); // reset search results to an empty array
     const res = await fetch(
@@ -36,7 +42,7 @@ const Search = () => {
   }, [debouncedValue]);
 
   return (
-    <div className="flex justify-start items-center gap-3 w-1/2 relative">
+    <div className="relative flex items-center justify-start w-1/2 gap-3">
       <IoSearchOutline className="text-2xl" />
       <input
         type="text"
@@ -46,7 +52,13 @@ const Search = () => {
         onChange={(event) => handleSearchInput(event)}
       />
       <div className="absolute mt-12 transition-all duration-500">
-        {searchResults && <SearchResults results={searchResults} />}
+        {searchResults && (
+          <SearchResults
+            results={searchResults}
+            setIsClicked={setIsClicked}
+            clearInput={clearInput}
+          />
+        )}
       </div>
     </div>
   );

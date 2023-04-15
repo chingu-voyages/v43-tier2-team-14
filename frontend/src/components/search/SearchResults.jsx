@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-const SearchResults = ({ results }) => {
+const SearchResults = ({ results, setIsClicked, clearInput }) => {
   // const books = [{ id: "title1" }, { id: "title2" }];
   const { items } = results;
   console.log(results);
@@ -11,8 +11,12 @@ const SearchResults = ({ results }) => {
         items.map((item) => {
           return (
             <div
-              className="mt-3 cursor-pointer hover:bg-red-300 py-2 px-5 rounded-md"
+              className="px-5 py-2 mt-3 rounded-md cursor-pointer hover:bg-red-300"
               key={item.id}
+              onClick={() => {
+                setIsClicked(true);
+                clearInput();
+              }}
             >
               <div className="flex items-center">
                 <Link to={`/book/${item.id}`}>
@@ -22,10 +26,10 @@ const SearchResults = ({ results }) => {
                     alt=""
                   />
                 </Link>
-                <div className="flex flex-col ml-10 w-full">
+                <div className="flex flex-col w-full ml-10">
                   <Link to={`/book/${item.id}`}>
                     <h4>{item.volumeInfo.title}</h4>
-                    <p className="font-light mt-3 text-sm">
+                    <p className="mt-3 text-sm font-light">
                       by {item.volumeInfo.authors && item.volumeInfo.authors[0]}
                     </p>
                   </Link>
