@@ -3,12 +3,23 @@
 ## Overview
 
 The project is a virtual book store made by react with fetched data from external API.
+1. Google Books API.
+2. NY Times Best Seller's API.
 
 ## Features
 
 - multi pages with dynamic routing
 - .....
 - .....
+## Deployed Links
+
+Frontend Deployed Link :
+https://chingu-v43-team14.ahmedlotfy.me/
+
+Backend Deploted Link :
+https://chingu-v43-team14-backend.ahmedlotfy.me/
+
+
 
 ## How To Use
 
