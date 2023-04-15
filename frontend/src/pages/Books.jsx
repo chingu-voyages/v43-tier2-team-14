@@ -1,13 +1,12 @@
-import { Link } from "react-router-dom";
+import CategoriesNav from "../components/CategoriesNav";
 import BooksContainer from "../components/book/BooksContainer";
 
-const Library = () => {
+const Books = () => {
   return (
     <div className="col-start-3 col-span-full">
+      <CategoriesNav />
       <BooksContainer />
     </div>
   );
 };
-export default Library;
-
-// the page is intended for testing purposes
+export default Books;

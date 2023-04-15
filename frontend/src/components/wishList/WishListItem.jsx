@@ -1,7 +1,7 @@
 import { BsBookmarkDashFill } from "react-icons/bs";
 import { bookStore } from "../../features/bookStore";
 import toast, { Toaster } from "react-hot-toast";
-
+import { Link } from "react-router-dom";
 const WishListItem = ({
   title,
   id,
@@ -21,12 +21,17 @@ const WishListItem = ({
   };
 
   return (
-    <article className="w-full md:w-3/6 mx-auto shadow-md bg-zinc-100 flex justify-around items-center my-6 p-4 space-x-4 border-2 rounded-md hover:shadow-sm">
-      <img src={imageLinks.thumbnail} alt="" />
-      <div className="flex flex-col p-4 flex-1 space-y-4">
+    <article className="w-3/4 xl:w-1/2 mx-auto shadow-md bg-zinc-100 flex flex-col md:flex-row justify-center md:justify-around items-center my-6 py-4 md:p-4 space-x-4 border-2 rounded-md hover:shadow-sm">
+      {imageLinks && (
+        <Link to={`/book/${id}`}>
+          <img src={imageLinks.thumbnail} alt={title} />
+        </Link>
+      )}
+
+      <div className="flex flex-col p-4 flex-1 space-y-4 text-center md:text-left">
         <h2 className="text-xl tracking-wider font-bold">{title}</h2>
         <span className="text-red-600 font-semibold">{authors}</span>
-        <p className="px-2 py-0.5 text-xs bg-red-500 text-white rounded-md w-fit">
+        <p className="px-2 py-0.5 mx-auto text-xs bg-red-500 text-white rounded-md md:ml-0 w-fit">
           {categories}
         </p>
         <p>{pageCount} pages</p>

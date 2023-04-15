@@ -40,9 +40,7 @@ passport.serializeUser(function (user, done) {
   done(null, user);
 });
 
-passport.deserializeUser(function (user, cb) {
-  process.nextTick(function () {
-    return cb(null, user);
-    console.log("from deserialize")
-  });
-});
+passport.deserializeUser(async function (id, done) {
+  const user = await User.findById(id).populate('books')
+  done(null, user);
+})

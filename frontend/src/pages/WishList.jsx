@@ -1,11 +1,9 @@
-import HomeBtn from "../components/UI/HomeBtn";
 import WishListWrapper from "../components/wishList/WishListWrapper";
 
 const WishList = () => {
   return (
-    <section className="text-start col-start-3 col-span-full">
+    <section className="text-center col-start-3 col-span-full mb-4">
       <WishListWrapper />
-      <HomeBtn />
     </section>
   );
 };
