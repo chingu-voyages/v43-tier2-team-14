@@ -73,6 +73,7 @@ app.get("/api/user", (req, res, next) => {
 app.get("/", (req, res, next) => {
   console.log("Hello World");
   res.status(200).json("hello world");
+  
 });
 
 app.use(function (err, req, res, next) {
