@@ -6,7 +6,7 @@ const SearchResults = ({ results, setIsClicked, clearInput }) => {
   console.log(results);
 
   return (
-    <div className="absolute rounded-2xl bg-gray-100 w-[400px] px-8 py-3">
+    <div className="z-50 absolute rounded-2xl bg-gray-100 w-[400px] px-8 py-3">
       {items &&
         items.map((item) => {
           return (
