@@ -13,7 +13,7 @@ const FeaturedListWrapper = () => {
 
   console.log(featuredList);
   return (
-    <div className="w-full md:pr-24 mb-24">
+    <div className="w-full p-5 mb-24 md:pr-24">
       <h2 className="font-semibold text-center">
         Best Sellers Books For{" "}
         {new Date(featuredList.bestsellers_date).toLocaleDateString("en-us", {

@@ -27,7 +27,7 @@ const BookBody = ({
   return (
     <article className="flex flex-col space-y-4">
       {title && (
-        <h2 className="text-4xl font-bold leading-tight tracking-widest text-center lg:text-left">
+        <h2 className="text-xl font-bold leading-tight tracking-widest text-center md:text-4xl lg:text-left">
           {title}
         </h2>
       )}

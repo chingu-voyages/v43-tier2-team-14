@@ -8,10 +8,10 @@ const SearchWrapper = () => {
   const user = userStore((state) => state.user);
 
   return (
-    <div className="col-start-3 col-span-full row-start-1 row-end-2 w-full mt-5 ">
-      <div className="flex justify-between items-center">
+    <div className="w-full col-start-3 row-start-1 row-end-2 mt-5 col-span-full ">
+      <div className="flex flex-col items-center justify-around md:flex-row">
         <Search />
-        <div className="px-5">
+        <div>
           {!user ? (
             <Loginbtn />
           ) : (
