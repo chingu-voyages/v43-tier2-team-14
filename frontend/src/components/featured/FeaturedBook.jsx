@@ -22,7 +22,7 @@ const FeaturedSingleBook = () => {
   const { title, authors, categories, description, pageCount, imageLinks } =
     singleBook || {};
   return (
-    <section className="px-12 mx-auto mb-14 lg:px-24">
+    <div className="px-8 mx-auto mb-14 lg:px-24">
       {!singleBook ? (
         <Loading />
       ) : (
@@ -31,7 +31,7 @@ const FeaturedSingleBook = () => {
           <BookBody singleBook={singleBook.volumeInfo} id={singleBook.id} />
         </div>
       )}
-    </section>
+    </div>
   );
 };
 
