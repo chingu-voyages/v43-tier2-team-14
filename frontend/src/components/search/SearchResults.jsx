@@ -19,13 +19,15 @@ const SearchResults = ({ results, setIsClicked, clearInput }) => {
               }}
             >
               <div className="flex items-center">
-                <Link to={`/book/${item.id}`}>
-                  <img
-                    className=""
-                    src={item.volumeInfo.imageLinks.thumbnail}
-                    alt=""
-                  />
-                </Link>
+                {item.volumeInfo.imageLinks.thumbnail && (
+                  <Link to={`/book/${item.id}`}>
+                    <img
+                      className=""
+                      src={item.volumeInfo.imageLinks.thumbnail}
+                      alt=""
+                    />
+                  </Link>
+                )}
                 <div className="flex flex-col w-full ml-10">
                   <Link to={`/book/${item.id}`}>
                     <h4>{item.volumeInfo.title}</h4>
