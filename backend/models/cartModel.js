@@ -1,7 +1,6 @@
 import { model, Schema } from "mongoose";
 
 const CartSchema = Schema({
-  cartId: String,
   cartItem: [{ type: Schema.Types.ObjectId, ref: 'Cart' }],
   userId: { type: Schema.Types.ObjectId, ref: 'User' },
 }, { timestamps: true })
