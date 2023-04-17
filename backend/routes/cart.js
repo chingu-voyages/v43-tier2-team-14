@@ -13,7 +13,6 @@ router.get('/get-cart-items', async (req, res, next) => {
 router.post('/add-item-to-cart', async (req, res, next) => {
   const { userId, item } = req.body
   console.log({ userId, item })
-
 });
 
 router.post('/remove-item-from-cart', async (req, res, next) => {
