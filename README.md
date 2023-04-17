@@ -17,12 +17,13 @@ The project is a virtual book store made by react with fetched data from externa
 ## Deployed Links
 
 Frontend Deployed Link :
-https://chingu-v43-team14.ahmedlotfy.me/
+https://v43-tier2-team14-frontend.onrender.com/
 
 Backend Deploted Link :
-https://chingu-v43-team14-backend.ahmedlotfy.me/
+https://v43-tier2-team14-backend.onrender.com/
 
-
+Backend Documentation link :
+https://documenter.getpostman.com/view/18748695/2s93Xx1jjT
 
 ## How To Use
 
