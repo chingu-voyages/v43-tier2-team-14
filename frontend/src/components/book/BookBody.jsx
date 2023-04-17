@@ -1,7 +1,12 @@
 import { Toaster } from "react-hot-toast";
 import useWishlist from "../../hooks/useWishlist";
-import { BsBookmarkPlus, BsBookmarkDashFill } from "react-icons/bs";
+import {
+  BsBookmarkPlus,
+  BsBookmarkDashFill,
+  BsCartPlusFill,
+} from "react-icons/bs";
 
+import GenericBtns from "../UI/GenericBtns";
 const BookBody = ({
   id,
   singleBook: {
@@ -54,11 +59,8 @@ const BookBody = ({
       )}
 
       <div className="flex justify-between pt-16">
-        {/*         <GenericBtns title="add to cart" icon={<BsCartPlusFill />} />
-         */}{" "}
+        <GenericBtns title="add to cart" icon={<BsCartPlusFill />} />
         <div className="flex items-center space-x-4">
-          {/*           experimental
-           */}{" "}
           <div
             className="flex justify-center w-12 p-3 mx-auto text-xl duration-300 cursor-pointer text-text-btn hover:text-text-main"
             onClick={() => addItemToWishlist(item)}
