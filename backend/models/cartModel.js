@@ -1,15 +1,9 @@
-import mongoose, { model, Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 
-const BookSchema = Schema({
-  bookId: String,
-  title: String,
-  categories: Array,
-  description: String,
-  authors: Array,
-  pageCount: String,
-  imageLinks: Array,
+const CartSchema = Schema({
+  cartItem: [{ type: Schema.Types.ObjectId, ref: 'Cart' }],
   userId: { type: Schema.Types.ObjectId, ref: 'User' },
 }, { timestamps: true })
 
-const Book = model('Book', BookSchema)
-export default Book
+const Cart = model('Cart', CartSchema)
+export default Cart
