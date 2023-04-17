@@ -9,8 +9,11 @@ The project is a virtual book store made by react with fetched data from externa
 ## Features
 
 - multi pages with dynamic routing
-- .....
-- .....
+- search books by title and author
+- functionality to add book to wishlist
+- authentication with google
+- responsive desgin 
+
 ## Deployed Links
 
 Frontend Deployed Link :
@@ -35,6 +38,9 @@ git clone https://github.com/chingu-voyages/v43-tier2-team-14.git
 
 # Go into the repository
 cd v43-tier2-team-14
+
+# navigate to frontend folder
+cd frontend
 
 # Install dependencies
 npm install

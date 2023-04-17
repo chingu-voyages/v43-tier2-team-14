@@ -9,8 +9,6 @@ const Search = () => {
 
   const debouncedValue = useDebounce(value, 1000);
 
-  const [isClicked, setIsClicked] = useState(false);
-
   const clearInput = () => {
     setValue("");
   };
@@ -42,25 +40,21 @@ const Search = () => {
   }, [debouncedValue]);
 
   return (
-    <div className="relative flex items-center justify-start w-1/2 gap-3">
-      <IoSearchOutline className="text-2xl" />
+    <div className="relative flex items-center justify-start w-10/12 gap-3 mb-6 md:mb-0 md:w-3/4">
+      <IoSearchOutline className="absolute text-2xl text-slate-400 left-3" />
       <input
         type="text"
-        placeholder="Search book name, author, edition ...."
-        className="w-1/2 py-3 bg-transparent border-none outline-none"
+        placeholder="Search book name, author, edition.."
+        className="w-full py-2 pl-12 pr-4 bg-transparent border-none caret-red-600 rounded-xl md:w-1/2 focus:outline-none focus:ring-1 focus:ring-red-600"
         value={value}
         onChange={(event) => handleSearchInput(event)}
         onBlur={() => clearInput()}
       />
-      <div className="absolute mt-12 transition-all duration-500">
-        {searchResults && (
-          <SearchResults
-            results={searchResults}
-            setIsClicked={setIsClicked}
-            clearInput={clearInput}
-          />
-        )}
-      </div>
+      {searchResults && (
+        <div className="absolute mt-12 transition-all duration-500">
+          <SearchResults results={searchResults} clearInput={clearInput} />
+        </div>
+      )}
     </div>
   );
 };

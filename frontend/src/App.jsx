@@ -9,7 +9,7 @@ import BookDetails from "./pages/BookDetails";
 import Wishlist from "./pages/WishList";
 import Books from "./pages/Books";
 import "./App.css";
-import FeaturedSingleBook from "./components/featured/FeaturedBook";
+import FeaturedPage from "./pages/FeaturedPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -24,7 +24,8 @@ function App() {
         },
         {
           path: "/:id",
-          element: <FeaturedSingleBook />,
+          // element: <FeaturedSingleBook />,
+          element: <FeaturedPage />,
         },
         {
           path: "books",

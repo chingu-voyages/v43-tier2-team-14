@@ -22,16 +22,16 @@ const Book = () => {
   }
 
   return (
-    <section className="mx-auto mb-14 px-12 lg:px-24">
+    <div className="px-8 mx-auto mb-14 lg:px-24">
       {!singleBook ? (
         <NoContent message="there is no data available at the moment!" />
       ) : (
-        <div className="section-wrapper grid grid-col-1 lg:grid-cols-2 justify-center items-start">
+        <div className="grid items-start justify-center section-wrapper grid-col-1 lg:grid-cols-2">
           <BookImage singleBook={singleBook} />
           <BookBody singleBook={singleBook} id={id} />
         </div>
       )}
-    </section>
+    </div>
   );
 };
 
