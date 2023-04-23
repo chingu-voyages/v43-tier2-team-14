@@ -12,7 +12,6 @@ router.get('/featured-books', async (req, res, next) => {
     const fetchUrl = `${NYTIMES_BOOK_URL}/lists/overview.json?api-key=${NYTIMES_BOOK_KEY}`
     const response = await fetch(fetchUrl);
     const data = await response.json();
-    console.log(fetchUrl)
     return res.status(200).json({ message: "books fetched successfully", featuredBooks: data })
 
   } catch (error) {
@@ -24,11 +23,9 @@ router.get('/featured-books', async (req, res, next) => {
 router.get('/single-book/:title', async (req, res, next) => {
   try {
     const { title } = req.params
-    console.log(title)
     const url = GOOGLE_BOOKAPI_URL
     const apiKey = GOOGLE_BOOKAPI
     const response = await fetch(`${url}?q=${title}&maxResults=1&key=${apiKey}`)
-    console.log(response)
     const data = await response.json()
     console.log("from inside singlebook title")
     res.status(200).json({ singleBook: data })
@@ -40,12 +37,10 @@ router.get('/single-book/:title', async (req, res, next) => {
 router.get('/search-books/:query', async (req, res, next) => {
   try {
     const { query } = req.params
-    console.log(query)
     const url = GOOGLE_BOOKAPI_URL
     const apiKey = GOOGLE_BOOKAPI
     const response = await fetch(`${url}?q=${query}+intitle:${query
       }&key=${apiKey}`)
-    console.log(response)
     const data = await response.json()
     console.log("from inside search-books intitle")
     res.status(200).json({ books: data })
@@ -58,7 +53,6 @@ router.get('/get-user-books', async (req, res, next) => {
   try {
     const { userId } = req.body
     const user = await User.findOne({ _id: userId }).populate("books")
-    console.log(user.books)
     res.status(200).json({ message: "User Books Fetched Successfully", books: user.books })
   } catch (error) {
     res.status(401).json({ message: error })
@@ -77,7 +71,6 @@ router.post('/add-book', async (req, res, next) => {
     const book = await Book.create({ bookId: id, title, categories, pageCount, imageLinks, description, authors, userId: user._id })
     user.books.push(book)
     await user.save()
-    console.log({ user, book })
     res.status(200).json({ message: "Book Added Successfully", book: book })
 
   } catch (error) {
@@ -89,7 +82,6 @@ router.post('/add-book', async (req, res, next) => {
 router.delete('/remove-book', async (req, res, next) => {
   try {
     const { userId, id } = req.body
-    console.log(userId, id)
     const book = await Book.findOneAndDelete({ bookId: id, userId: userId })
     if (!book) {
       return res.status(404).json({ message: "Book not found" })
@@ -119,10 +111,8 @@ router.get('/:id', async (req, res, next) => {
     const apiKey = GOOGLE_BOOKAPI
     const fetchUrl = `${url}/${id}?key=${apiKey}`
 
-    console.log(fetchUrl)
     const response = await fetch(fetchUrl)
     const data = await response.json()
-    console.log(data)
     res.status(200).json({ message: "Book Fetched Successfully", Book: data })
   } catch (error) {
     res.status(400).json({ message: 'Error Fetching Book' })
@@ -159,11 +149,8 @@ router.get('/', async (req, res, next) => {
       const { index } = req.query
       fetchUrl += `&startIndex=${index}`
     }
-    console.log(fetchUrl)
     const response = await fetch(`${fetchUrl}&key=${apiKey}`)
-    console.log(response)
     const data = await response.json()
-    console.log(data)
     res.status(200).json({ categories: data })
   } catch (error) {
     res.status(400).json({ message: error.message })

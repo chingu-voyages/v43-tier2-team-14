@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 const FeaturedList = ({ list }) => {
   const { books } = list;
-  console.log(books);
 
   return (
     <div className="grid w-full gap-6 grid-cols-200">

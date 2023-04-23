@@ -3,6 +3,7 @@
 ## Overview
 
 The project is a virtual book store made by react with fetched data from external API.
+
 1. Google Books API.
 2. NY Times Best Seller's API.
 
@@ -12,17 +13,18 @@ The project is a virtual book store made by react with fetched data from externa
 - search books by title and author
 - functionality to add book to wishlist
 - authentication with google
-- responsive desgin 
+- responsive desgin
 
 ## Deployed Links
 
 Frontend Deployed Link :
-https://chingu-v43-team14.ahmedlotfy.me/
+https://v43-tier2-team14-frontend.onrender.com/
 
 Backend Deploted Link :
-https://chingu-v43-team14-backend.ahmedlotfy.me/
+https://v43-tier2-team14-backend.onrender.com/
 
-
+Backend Documentation link :
+https://documenter.getpostman.com/view/18748695/2s93Xx1jjT
 
 ## How To Use
 
@@ -45,9 +47,43 @@ cd frontend
 # Install dependencies
 npm install
 
+# create .env.development if running in development
+and then add
+VITE_BACKEND_URL="http://localhost:4000"
+
 # Run the app
 npm run dev
 ```
+
+3. In Another console
+
+```
+# Navigate back to the v43-tier2-team-14 folder
+
+# Then go to backend folder
+
+# Install dependencies
+npm install
+
+# Create .env file  add the necessary secrets environment variables
+
+ PORT = ""
+ HTTPS_PORT = ""
+ MONGO_URI = ""
+ GOOGLE_ID = ""
+ GOOGLE_SECRET = ""
+ GOOGLE_BOOKAPI = ""
+ SESSION_SECRET = ""
+ GOOGLE_BOOKAPI_URL = ""
+ APP_HOME = ""
+ NYTIMES_BOOK_KEY = ""
+ NYTIMES_BOOK_SECRET = ""
+ NYTIMES_BOOK_URL = ""
+
+# Run the backend server
+npm run dev
+```
+
 
 ## Technologies used
 
