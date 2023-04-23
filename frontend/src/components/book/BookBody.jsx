@@ -19,7 +19,7 @@ const BookBody = ({
   },
 }) => {
   const { addItemToWishlist, isAdded } = useWishlist(id, title);
-  const {addItemToCart,isOnCart} = useCart(id,title)
+  // const {addItemToCart,isOnCart} = useCart(id,title)
   const item = {
     id,
     title,
