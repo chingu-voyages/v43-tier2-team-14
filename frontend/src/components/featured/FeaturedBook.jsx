@@ -11,14 +11,12 @@ const FeaturedSingleBook = () => {
       `${import.meta.env.VITE_BACKEND_URL}/api/books/single-book/${id}`
     );
     const data = await res.json();
-    console.log(data.singleBook.items[0]);
     setSingleBook(data.singleBook.items[0]);
   };
 
   useEffect(() => {
     fetchSingleBook();
   }, [id]);
-  console.log(singleBook);
   const { title, authors, categories, description, pageCount, imageLinks } =
     singleBook || {};
   return (
