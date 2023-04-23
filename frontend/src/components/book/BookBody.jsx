@@ -19,7 +19,7 @@ const BookBody = ({
   },
 }) => {
   const { addItemToWishlist, isAdded } = useWishlist(id, title);
-
+  const {addItemToCart,isOnCart} = useCart(id,title)
   const item = {
     id,
     title,
@@ -59,7 +59,13 @@ const BookBody = ({
       )}
 
       <div className="flex justify-between pt-16">
-        <GenericBtns title="add to cart" icon={<BsCartPlusFill />} />
+        <GenericBtns
+          title="add to cart"
+          icon={<BsCartPlusFill />}
+          onClick={() => {
+            addItemToCart(item);
+          }}
+        />
         <div className="flex items-center space-x-4">
           <div
             className="flex justify-center w-12 p-3 mx-auto text-xl duration-300 cursor-pointer text-text-btn hover:text-text-main"

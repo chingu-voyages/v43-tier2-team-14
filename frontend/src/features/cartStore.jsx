@@ -3,18 +3,27 @@ import { devtools } from "zustand/middleware";
 import axios from "axios";
 
 const store = create({
-  cartItems: null,
-  fetchCartItems: async (userId) => {
+  cart: null,
+  getCart: async (userId) => {
     const response = await axios.get(
       `${import.meta.env.VITE_BACKEND_URL}/api/cart/get-cart-items`,
       {
         userId: userId,
       }
     );
-    set({ cartItems: response });
+    set({ cart: response });
+  },
+  addItemToCartState: (item) => {
+    set((state)=>{
+      const cartItemExist = state.cart.find(item.id)
+    })
   },
 
-  addItemToCart: async (userId, item) => {
+  removeItemFromCartState: async (item) => {
+    set({ ...cart, item });
+  },
+
+  addCartDB: async (userId, cart) => {
     const response = await axios.post(
       `${import.meta.env.VITE_BACKEND_URL}/api/cart/add-item-to-cart`,
       {
@@ -22,15 +31,14 @@ const store = create({
         item: item,
       }
     );
-    set({ ...cartItems, response });
+    set({ ...cart, response });
   },
-  
-  removeItemFromCart: async (userId, item) => {
+
+  removeCartDB: async (userId) => {
     const response = await axios.post(
       `${import.meta.env.VITE_BACKEND_URL}/api/cart/remove-item-from-cart`,
       {
         userId: userId,
-        item: item,
       }
     );
     set({ response });

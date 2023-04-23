@@ -15,8 +15,6 @@ const Book = () => {
     import.meta.env.VITE_BACKEND_URL
   }/api/books/${id}
   `);
-  console.log(`${single_book_url}${id}`);
-  console.log(singleBook);
   if (isLoading) {
     return <Loading />;
   }

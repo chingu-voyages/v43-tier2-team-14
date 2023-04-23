@@ -34,9 +34,7 @@ const Search = () => {
   }, []);
 
   useEffect(() => {
-    console.log("Value: ", debouncedValue);
     fetchSearchResults(value);
-    console.log(searchResults);
   }, [debouncedValue]);
 
   return (
